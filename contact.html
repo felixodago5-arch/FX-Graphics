@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | FX Graphics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init({
+                publicKey: "7iVlfEl-rVQC6-ON7",
+            });
+        })();
+    </script>
+    <style>
+        .contact-header {
+            padding: 6rem 0 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: #333;
+        }
+        
+        .contact-details {
+            padding: 5rem 0;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .contact-method {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .contact-method i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .business-hours {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+        }
+        
+        .hours-table {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .hours-table tr {
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .hours-table td {
+            padding: 0.8rem 0;
+        }
+        
+        .hours-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+        }
+        
+        .map-container {
+            margin-top: 3rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+        }
+        
+        .map-placeholder {
+            background: #f0f0f0;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+        
+        .faq-section {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-toggle.active {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="FX Graphics Logo" class="logo-img">
+</a>
+                <button class="mobile-menu-btn">☰</button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="contact-header">
+        <div class="container">
+            <h1 class="fade-in">Get in Touch</h1>
+            <p class="fade-in delay-1">Let's discuss your project and bring your creative vision to life</p>
+        </div>
+    </section>
+
+    <section class="contact-details">
+        <div class="container">
+            <div class="contact-methods">
+                <div class="contact-method fade-in">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>hello@fxgraphics.com</p>
+                    <p>Response within 24 hours</p>
+                </div>
+                
+                <div class="contact-method fade-in delay-1">
+                    <i class="fas fa-phone"></i>
+                    <h3>Call Us</h3>
+                    <p>254106723905</p>
+                    <p>Mon-Fri, 9AM-6PM EST</p>
+                </div>
+                
+                <div class="contact-method fade-in delay-2">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Visit Us</h3>
+                    <p>on our social media accounts</p>
+                    <p>FX Graphics</p>
+                </div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h2>Send Us a Message</h2>
+                    <p>Fill out the form and we'll get back to you as soon as possible. For urgent inquiries, please use the WhatsApp chat button.</p>
+                    
+                    <div class="business-hours">
+                        <h3>Business Hours</h3>
+                        <table class="hours-table">
+                            <tr>
+                                <td>Monday - Friday</td>
+                                <td>9:00 AM - 6:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td>10:00 AM - 4:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Sunday</td>
+                                <td>Closed</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="social-links" style="margin-top: 2rem;">
+                        <h3>Follow Us</h3>
+                       <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+    <a href="#" aria-label="Facebook" style="font-size: 1.5rem; color: #1877F2;">
+        <i class="fab fa-facebook"></i>
+    </a>
+
+    <a href="#" aria-label="Instagram" style="font-size: 1.5rem; color: #E4405F;">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="#" aria-label="Behance" style="font-size: 1.5rem; color: #053EFF;">
+        <i class="fab fa-behance"></i>
+    </a>
+</div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+
+                <form id="contactForm" action="/submit" method="POST">
+
+                    <div class="form-group">
+
+                        <label for="name">Name</label>
+
+                        <input type="text" id="name" name="name" class="form-control" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="email">Email</label>
+
+                        <input type="email" id="email" name="email" class="form-control" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="subject">Subject</label>
+
+                        <input type="text" id="subject" name="subject" class="form-control" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="message">Message</label>
+
+                        <textarea id="message" name="message" class="form-control" required></textarea>
+
+                    </div>
+
+                    <button type="submit" class="btn">Send Message</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+            <div class="map-container fade-in delay-2">
+    <div class="map-placeholder">
+        <div style="text-align: center;">
+            <i class="fas fa-globe-africa" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+            <h3>Remote Creative Services</h3>
+            <p>Serving clients nationwide & internationally</p>
+            <p>Available online • Meetings by appointment</p>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about working with FX Graphics</p>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        What is your typical project timeline?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Timelines vary based on project scope. Logo design typically takes 1-2 weeks, complete branding 3-4 weeks, and larger projects 4-8 weeks. We provide a detailed timeline during our initial consultation.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in delay-1">
+                    <div class="faq-question">
+                        What is your pricing structure?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer both project-based pricing and retainer packages. Most projects range from $500 for simple designs to $5,000+ for comprehensive branding. We provide detailed quotes after understanding your specific needs.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in delay-2">
+                    <div class="faq-question">
+                        How many revisions do you include?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We include 3 rounds of revisions for all design concepts. Additional revisions can be accommodated if needed. Our process is collaborative, and we work closely with you to ensure complete satisfaction.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in delay-3">
+                    <div class="faq-question">
+                        What file formats do you deliver?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We deliver all standard file formats including AI, EPS, PDF, PNG, JPG, and SVG. For web projects, we provide optimized files. We also include source files and usage guidelines with every project.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                   
+                    <p>Creating stunning visual designs that help businesses stand out and succeed.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-envelope"></i> hello@fxgraphics.com</p>
+                    <p><i class="fas fa-phone"></i> 254106723905</p>
+                    <div class="social-links">
+                           <div class="social-links">
+                      <a href="https://www.facebook.com/share/17nQxYegds/" target="_blank" rel="noopener" aria-label="Facebook">
+                         <i class="fab fa-facebook-f"></i>
+                     </a>
+                     <a href="https://www.tiktok.com/@fxgraphics2?_r=1&_t=ZM-92QnYoAoVul" target="_blank" rel="noopener" aria-label="TikTok">
+                         <i class="fab fa-tiktok"></i>
+                     </a>
+
+
+                     <a href="https://www.instagram.com/fx_graphics_studio_?igsh=OWJxbDk4eGNlcXhv" target="_blank" rel="noopener" aria-label="Instagram">
+                         <i class="fab fa-instagram"></i>
+                     </a>
+
+                      <a href="https://www.behance.net/felixodago" target="_blank" rel="noopener" aria-label="Behance">
+                         <i class="fab fa-behance"></i>
+                     </a>
+
+                     <a href="https://whatsapp.com/channel/0029VbBAZRc5q08jp8d53u3u" target="_blank" rel="noopener" aria-label="WhatsApp Channel">
+                         <i class="fab fa-whatsapp"></i>
+                      </a>
+                  </div>
+                </div>
+            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FX Graphics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/254106723905?text=Hello%20FX%20Graphics!%20I'm%20interested%20in%20your%20design%20services"
+   target="_blank"
+   rel="noopener"
+   class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+    <script src="js/main.js"></script>
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                
+                answer.classList.toggle('active');
+                toggle.classList.toggle('active');
+                toggle.textContent = toggle.classList.contains('active') ? '−' : '+';
+            });
+        });
+
+         // Form submission
+
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+
+        e.preventDefault();
+
+        const params = {
+
+            name: document.getElementById("name").value,
+
+            email: document.getElementById("email").value,
+
+            subject: document.getElementById("subject").value,
+
+            message: document.getElementById("message").value
+
+        };
+
+        emailjs.send("service_p7ghusi", "template_5vusssu", params)
+
+          .then(function(response) {
+
+              alert("Message sent successfully!");
+
+              document.getElementById("contactForm").reset();
+
+          }, function(error) {
+
+              alert("Failed to send message. Try again.");
+
+              console.error("EmailJS error:", error);
+
+          });
+
+    });
+    </script>
+    
+</body>
+</html>

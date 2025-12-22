@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | FX Graphics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .portfolio-header {
+            padding: 6rem 0 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+        
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        .portfolio-detail {
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            margin-top: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .project-info {
+            margin-top: 2rem;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .project-info ul {
+            list-style: none;
+        }
+        
+        .project-info li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .project-info li:last-child {
+            border-bottom: none;
+        }
+        
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 10px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            padding: 6px 14px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 20px;
+            border: 1px solid #dbeafe;
+            background: #f8fafc;
+            color: #2563eb;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .filter-btn:hover {
+            background: #2563eb;
+            color: #fff;
+        }
+
+        .filter-btn.active {
+            background: #2563eb;
+            color: #fff;
+            border-color: #2563eb;
+        }
+        
+        /* Testimonials Section */
+#testimonials {
+    background-color: #f8fafc;
+    padding: 4rem 1rem;
+    color: #1e293b;
+}
+
+#testimonials .section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #1e3a8a;
+    margin-bottom: 2rem;
+}
+
+/* Container for slider-style grid */
+.testimonials-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Each testimonial card */
+.testimonials-grid .testimonial-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 280px;
+    flex-shrink: 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0.5; /* Side cards */
+    transform: scale(0.85);
+}
+
+/* Center testimonial */
+.testimonials-grid .testimonial-card.center {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Testimonial message */
+.testimonials-grid .testimonial-message {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #475569;
+}
+
+/* Author name & role */
+.testimonials-grid .testimonial-author {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.testimonials-grid .testimonial-author span {
+    display: block;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+/* Navigation dots below */
+.testimonials-dots {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.testimonials-dots span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #cbd5e1;
+    border-radius: 50%;
+    margin: 0 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.testimonials-dots span.active {
+    background-color: #3b82f6;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .testimonials-grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .testimonials-grid .testimonial-card {
+        width: 100%;
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+       
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="FX Graphics Logo" class="logo-img">
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="portfolio-header">
+        <div class="container">
+            <h1 class="fade-in">Our Creative Portfolio</h1>
+            <p class="fade-in delay-1">Explore our collection of design projects that have helped businesses grow and succeed</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <!-- Portfolio Filters -->
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+                <button class="filter-btn" data-filter="print">Print Design</button>
+                <button class="filter-btn" data-filter="digital">Digital</button>
+                <button class="filter-btn" data-filter="packaging">Packaging</button>
+            </div>
+
+            <!-- Portfolio Gallery -->
+            <div class="gallery-grid">
+                <!-- Branding Projects -->
+                <div class="gallery-item fade-in stagger-item" data-category="branding">
+                    <img src="images/Document.png" alt="Shoe store Brand Identity - Logo and Brand Guidelines" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>StoreStart Brand Identity</h3>
+                        <p>Complete branding for a tech startup</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in stagger-item" data-category="branding">
+                    <img src="images/Document1.png" alt="Organic Foods Logo and Packaging Design" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>One of our complited projects</h3>
+                        <p>A social media post sample</p>
+                    </div>
+                </div>
+
+                <!-- Print Design Projects -->
+                <div class="gallery-item fade-in stagger-item" data-category="print">
+                    <img src="images/IMG-20251115-WA0004.jpg" alt="Fashion Brochure Design" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>General designs</h3>
+                        <p>Different designs based on client's need</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in stagger-item" data-category="print">
+                    <img src="images/Document4.png" alt="Music Festival Poster Series" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Event Poster Series</h3>
+                        <p>Poster designs for a football match</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in stagger-item" data-category="print">
+                    <img src="images/mockup1.png" alt="Music Festival Poster Series" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>business ID</h3>
+                        <p>A custom business ID</p>
+                    </div>
+                </div>
+
+                <!-- Digital Projects -->
+                <div class="gallery-item fade-in stagger-item" data-category="digital">
+                    <img src="images/nyakwere4 mockup.png" alt="Social Media Campaign for Beauty Brand" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Social Media Campaign</h3>
+                        <p>30-day content for a furniture store</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in stagger-item" data-category="digital">
+                    <img src="images/Background.png" alt="E-commerce Website UI Design" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>store sign</h3>
+                        <p>A complete transformation sign</p>
+                    </div>
+                </div>
+
+
+                <!-- Packaging Projects -->
+                <div class="gallery-item fade-in stagger-item" data-category="packaging">
+                    <img src="images/packaging1.png" alt="Premium Coffee Packaging Design" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Bulb Packaging</h3>
+                        <p>Premium Bulb brand packaging</p>
+                    </div>
+                </div>
+                
+            </div>
+
+           
+            <!-- Project Stats -->
+            <div class="project-stats">
+                <div class="stat-item fade-in">
+                    <span class="stat-number">150+</span>
+                    <span>Projects Completed</span>
+                </div>
+                <div class="stat-item fade-in delay-1">
+                    <span class="stat-number">50</span>
+                    <span>Satisfied Clients</span>
+                </div>
+                <div class="stat-item fade-in delay-2">
+                    <span class="stat-number">2</span>
+                    <span>Years Experience</span>
+                </div>
+                <div class="stat-item fade-in delay-3">
+                    <span class="stat-number">2</span>
+                    <span>Awards Won</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                  
+                    <p>Creating stunning visual designs that help businesses stand out and succeed.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-envelope"></i> hello@fxgraphics.com</p>
+                    <p><i class="fas fa-phone"></i> 254106723905</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/17nQxYegds/" target="_blank" rel="noopener" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                       <a href="https://www.tiktok.com/@fxgraphics2?_r=1&_t=ZM-92QnYoAoVul" target="_blank" rel="noopener" aria-label="TikTok">
+                         <i class="fab fa-tiktok"></i>
+                     </a>
+                        <a href="https://www.twitter.com/fx_graphics_studio_" target="_blank" rel="noopener" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/fx_graphics_studio_?igsh=OWJxbDk4eGNlcXhv" target="_blank" rel="noopener" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.behance.net/felixodago" target="_blank" rel="noopener" aria-label="Behance">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                        <a href="https://whatsapp.com/channel/0029VbBAZRc5q08jp8d53u3u" target="_blank" rel="noopener" aria-label="WhatsApp Channel">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FX Graphics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <div class="lightbox-content">
+            <img src="" alt="">
+            <button class="close-lightbox">&times;</button>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/254106723905?text=Hello%20FX%20Graphics!%20I'm%20interested%20in%20your%20design%20services"
+       target="_blank"
+       rel="noopener"
+       class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+<script>
+     
+</script>
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+    
+</body>
+</html>

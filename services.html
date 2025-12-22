@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | FX Graphics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .services-hero {
+            min-height: 50vh;
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+        }
+        
+        .services-detail {
+            padding: 5rem 0;
+        }
+        
+        .service-category {
+            margin-bottom: 4rem;
+            padding: 3rem;
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .service-category h2 {
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--medium-gray);
+            font-size: 1.8rem;
+        }
+        
+        .services-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-detail-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .service-detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-blue);
+        }
+        
+        .service-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .service-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--medium-gray);
+            display: flex;
+            align-items: center;
+            color: var(--dark-gray);
+        }
+        
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .service-features li i {
+            color: var(--primary-blue);
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 1rem;
+        }
+        
+        .pricing-section {
+            background: var(--light-gray);
+            padding: 5rem 0;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .pricing-card {
+            background: var(--white);
+            border: 2px solid var(--medium-gray);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--primary-blue);
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+        
+        .pricing-card.featured:before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.3rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin: 1rem 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: var(--dark-gray);
+            font-weight: normal;
+        }
+        
+        .cta-service {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .service-category {
+                padding: 2rem 1rem;
+            }
+            
+            .services-detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    
+    </style>
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="FX Graphics Logo" class="logo-img">
+</a>
+                <button class="mobile-menu-btn">☰</button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                   
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="services-hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 style="color: white;">Our Design Services</h1>
+                <p style="color: rgba(255,255,255,0.9);">Comprehensive graphic design solutions tailored to your business needs and objectives</p>
+            </div>
+        </div>
+    </section>
+   
+    <section class="services-detail">
+        <div class="container">
+            <!-- Brand Identity Services -->
+            <div class="service-category fade-in">
+                <h2>Brand Identity Design</h2>
+                <div class="services-detail-grid">
+                    <div class="service-detail-card">
+                        <div class="service-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Logo Design</h3>
+                        <p>Unique, memorable logos that represent your brand's essence and values, creating a lasting impression.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Multiple concept options</li>
+                            <li><i class="fas fa-check"></i> Unlimited revisions</li>
+                            <li><i class="fas fa-check"></i> All file formats included</li>
+                            <li><i class="fas fa-check"></i> Brand guidelines document</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-detail-card">
+                        <div class="service-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Brand Guidelines</h3>
+                        <p>Comprehensive brand manuals ensuring consistent visual identity across all platforms and materials.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Color palette system</li>
+                            <li><i class="fas fa-check"></i> Typography guidelines</li>
+                            <li><i class="fas fa-check"></i> Logo usage rules</li>
+                            <li><i class="fas fa-check"></i> Brand voice documentation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-detail-card">
+                        <div class="service-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Complete Branding</h3>
+                        <p>End-to-end branding solutions for new businesses or rebranding projects, ensuring cohesive identity.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Logo + brand identity</li>
+                            <li><i class="fas fa-check"></i> Business collateral design</li>
+                            <li><i class="fas fa-check"></i> Digital assets package</li>
+                            <li><i class="fas fa-check"></i> Brand launch strategy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marketing Materials -->
+            <div class="service-category fade-in delay-1">
+                <h2>Marketing & Print Design</h2>
+                <div class="services-detail-grid">
+                    <div class="service-detail-card">
+                        <div class="service-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h3>Brochures & Flyers</h3>
+                        <p>Eye-catching print materials that effectively communicate your message and drive customer engagement.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Creative layout design</li>
+                            <li><i class="fas fa-check"></i> Print-ready files</li>
+                            <li><i class="fas fa-check"></i> Multiple version options</li>
+                            <li><i class="fas fa-check"></i> Digital PDF copies</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-detail-card">
+                        <div class="service-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3>Posters & Banners</h3>
+                        <p>Large format designs for events, promotions, and advertising that command attention and visibility.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Event poster designs</li>
+                            <li><i class="fas fa-check"></i> Exhibition banners</li>
+                            <li><i class="fas fa-check"></i> Retail signage solutions</li>
+                            <li><i class="fas fa-check"></i> Billboard advertising designs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-detail-card">
+                        <div class="service-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <h3>Packaging Design</h3>
+                        <p>Product packaging that stands out on shelves and tells your brand story through compelling visuals.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> 3D product mockups</li>
+                            <li><i class="fas fa-check"></i> Die-line creation</li>
+                            <li><i class="fas fa-check"></i> Material selection guidance</li>
+                            <li><i class="fas fa-check"></i> Print specifications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Digital Design -->
+            <div class="service-category fade-in delay-2">
+                <h2>Digital & Social Media</h2>
+                <div class="services-detail-grid">
+                    <div class="service-detail-card">
+                        <div class="service-icon">
+                            <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <h3>Social Media Graphics</h3>
+                        <p>Engaging visuals for all social platforms to boost your online presence and audience engagement.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Facebook/Instagram posts</li>
+                            <li><i class="fas fa-check"></i> Story designs and templates</li>
+                            <li><i class="fas fa-check"></i> Profile and cover photos</li>
+                            <li><i class="fas fa-check"></i> Monthly content calendars</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-detail-card">
+                        <div class="service-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3>Web & UI Design</h3>
+                        <p>User-friendly interface designs that enhance user experience and drive conversions on digital platforms.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Website mockups</li>
+                            <li><i class="fas fa-check"></i> Mobile app UI design</li>
+                            <li><i class="fas fa-check"></i> Dashboard interfaces</li>
+                            <li><i class="fas fa-check"></i> Wireframing and prototyping</li>
+                        </ul>
+                        <h3 style="color: crimson;">currently not available now</h3>
+                    </div>
+                    
+                    <div class="service-detail-card">
+                        <div class="service-icon">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        <h3>Email Marketing</h3>
+                        <p>Beautiful email templates that improve open and click-through rates while maintaining brand consistency.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Newsletter templates</li>
+                            <li><i class="fas fa-check"></i> Promotional email designs</li>
+                            <li><i class="fas fa-check"></i> Responsive layouts</li>
+                            <li><i class="fas fa-check"></i> Campaign graphics package</li>
+                        </ul>
+                         <h3 style="color: crimson;">currently not available now</h3>
+                    </div>
+                </div>
+            </div>
+             <div>
+            <div>
+                <section class="middle-cta">
+                    <ul class="cta-list">
+                        
+                        <li>
+                            <a href="portfolio.html" class="cta-btn">
+                                <i class="fas fa-briefcase"></i>
+                                Portfolio
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </a>
+            </div>
+             </div>
+
+            <!-- Our Process -->
+            <div class="service-category fade-in delay-3">
+                <h2>Our Design Process</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3>Discovery</h3>
+                        <p>We learn about your business, goals, and target audience through detailed consultation.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3>Concept Development</h3>
+                        <p>Creating initial design concepts based on our research and strategic analysis.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3>Design & Refine</h3>
+                        <p>Developing the chosen concept with your feedback and collaborative input.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h3>Final Delivery</h3>
+                        <p>Providing all final files, supporting materials, and implementation guidance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <div class="cta-service">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 1rem;">Ready to Start Your Project?</h2>
+            <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Contact us today for a free consultation and quote for your design project.</p>
+            <a href="contact.html" class="btn" style="background: white; color: var(--primary-blue); font-weight: 600; padding: 1rem 3rem;">
+                <i class="fas fa-comment-dots"></i> Get Free Consultation
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                 
+                    <p style="color: #CBD5E1; margin-top: 1rem;">Creating stunning visual designs that help businesses stand out and succeed in today's competitive market.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p style="color: #CBD5E1; margin-bottom: 0.5rem;"><i class="fas fa-envelope"></i> hello@fxgraphics.com</p>
+                    <p style="color: #CBD5E1; margin-bottom: 0.5rem;"><i class="fas fa-phone"></i> 254106723905</p>
+                    <p style="color: #CBD5E1;"><i class="fas fa-map-marker-alt"></i> Online</p>
+                       <div class="social-links">
+                      <a href="https://www.facebook.com/share/17nQxYegds/" target="_blank" rel="noopener" aria-label="Facebook">
+                         <i class="fab fa-facebook-f"></i>
+                     </a>
+                     <a href="https://www.tiktok.com/@felixjames818?_r=1&_t=ZM-92Hzz3jAWdv" target="_blank" rel="noopener" aria-label="TikTok">
+                         <i class="fab fa-tiktok"></i>
+                     </a>
+
+                     <a href="https://www.instagram.com/fx_graphics_studio_?igsh=OWJxbDk4eGNlcXhv" target="_blank" rel="noopener" aria-label="Instagram">
+                         <i class="fab fa-instagram"></i>
+                     </a>
+
+                      <a href="https://www.behance.net/felixodago" target="_blank" rel="noopener" aria-label="Behance">
+                         <i class="fab fa-behance"></i>
+                     </a>
+
+                     <a href="https://whatsapp.com/channel/0029VbBAZRc5q08jp8d53u3u" target="_blank" rel="noopener" aria-label="WhatsApp Channel">
+                         <i class="fab fa-whatsapp"></i>
+                      </a>
+                  </div>
+                </div>
+            </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FX Graphics. All rights reserved. | <a href="#" style="color: #CBD5E1; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: #CBD5E1; text-decoration: none;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/254106723905?text=Hello%20FX%20Graphics!%20I'm%20interested%20in%20your%20design%20services"
+   target="_blank"
+   rel="noopener"
+   class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
