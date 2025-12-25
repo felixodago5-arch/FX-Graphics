@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://felixodago5-arch.github.io/FX-Graphics/sitemap.xml
