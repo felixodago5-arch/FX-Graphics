@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <link rel="icon" type="image/png" href="images/stima.jpg">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonials</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: #f8f9fa; 
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      opacity: 0.9;
+    }
+    
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      display: block;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* Main content container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 40px;
+    }
+    
+    /* Section header */
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-header h2 {
+      font-size: 2.2rem;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+    
+    .section-header p {
+      color: #7f8c8d;
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Testimonials grid - enhanced from original */
+    #reviews { 
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    
+    /* Testimonial card - enhanced styling */
+    .card { 
+      background: #fff; 
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .header { 
+      display: flex; 
+      align-items: center; 
+      gap: 15px; 
+      margin-bottom: 20px;
+    }
+    
+    .header img { 
+      width: 60px; 
+      height: 60px; 
+      border-radius: 50%; 
+      object-fit: cover;
+      border: 3px solid #f1f1f1;
+    }
+    
+    .name { 
+      font-weight: 700; 
+      font-size: 1.1rem;
+      color: #2c3e50;
+    }
+    
+    .company { 
+      font-size: 0.9rem; 
+      color: #3498db;
+      margin-top: 3px;
+    }
+    
+    .text { 
+      margin: 15px 0 25px; 
+      font-style: italic;
+      color: #555;
+      flex: 1;
+      line-height: 1.7;
+    }
+    
+    .rating { 
+      color: #f5a623; 
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      margin-top: auto;
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+      background-color: #2c3e50;
+      color: #ecf0f1;
+    }
+    
+    .footer p {
+      margin: 5px 0;
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 60px 15px;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .hero-stats {
+        gap: 20px;
+      }
+      
+      .stat-number {
+        font-size: 2rem;
+      }
+      
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
+      
+      #reviews {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+    }
+     /* Testimonials Section */
+        #testimonials {
+            background-color: var(--section-bg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-content {
+            margin-bottom: 20px;
+            color: var(--light-gray);
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+
+    
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>What Our Clients Say</h1>
+      <p>Discover why businesses trust our services. Read genuine feedback from our satisfied clients across industries.</p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">4.9</span>
+          <span class="stat-label">Average Rating</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Happy Clients</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">98%</span>
+          <span class="stat-label">Would Recommend</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Testimonials</h2>
+            <div class="testimonials-grid" id="testimonialsContainer">
+                <!-- Testimonials will be loaded here from Google Sheets -->
+            </div>
+        </div>
+
+  <!-- Footer -->
+  <div class="footer"  style="text-align:center; font-size:0.8rem; color:#777; margin-top:40px;">
+  Designed & Developed by <a href="https://felixodago5-arch.github.io/test/" target="_blank">FX Design 2025</a>
+    <p>© 2025 Testimonials. All rights reserved.</p>
+   
+  </div>
+
+  <script>
+      // Testimonials from Google Sheets
+        // This is a simplified example - in production, you'd use Google Apps Script
+        // to create a web app that serves your sheet data as JSON
+       const testimonialsContainer = document.getElementById('testimonialsContainer');
+const sheetURL = "https://script.google.com/macros/s/AKfycbzjZSoQjLZQIgnJDOMpaRdPovRO9bgxL-eN9z1Sro7K9q__Z44GaOUatOXoMsz2USYhIw/exec"; // replace with your Web App URL
+
+function loadTestimonials() {
+    fetch(sheetURL)
+        .then(response => response.json())
+        .then(data => {
+            testimonialsContainer.innerHTML = ''; // clear old testimonials
+
+            data.forEach(testimonial => {
+                const rating = Number(testimonial.rating) || 0; // ensure number
+                const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+
+                const testimonialHTML = `
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">${stars}</div>
+                        <p class="testimonial-content">"${testimonial.text}"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="${testimonial.avatar || 'images/default-avatar.png'}" alt="${testimonial.name}">
+                            </div>
+                            <div class="author-info">
+                                <h4>${testimonial.name}</h4>
+                                <p>${testimonial.company}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                testimonialsContainer.innerHTML += testimonialHTML;
+            });
+        })
+        .catch(error => {
+            console.error("Error loading testimonials:", error);
+            testimonialsContainer.innerHTML = '<p style="color:red;">Failed to load testimonials.</p>';
+        });
+}
+
+document.addEventListener('DOMContentLoaded', loadTestimonials);
+
+        // Load testimonials when page loads
+        document.addEventListener('DOMContentLoaded', loadTestimonials);
+
+</script>
+  
+</body>
+</html>

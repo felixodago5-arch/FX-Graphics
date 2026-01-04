@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="center">
+  <div class="login-box">
+    <div class="login-header">
+      <i class="fas fa-lock fa-2x" style="color: #667eea; margin-bottom: 15px;"></i>
+      <h2>Admin Login</h2>
+      <p style="color: #666; margin-bottom: 25px; font-size: 14px;">Enter your credentials to access the admin panel</p>
+    </div>
+    
+    <div class="input-group">
+      <div style="position: relative;">
+        <i class="fas fa-envelope" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #667eea;"></i>
+        <input type="email" id="email" placeholder="Email" style="padding-left: 40px;">
+      </div>
+    </div>
+    
+    <div class="input-group" style="margin-top: 20px;">
+      <div style="position: relative;">
+        <i class="fas fa-key" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #667eea;"></i>
+        <input type="password" id="password" placeholder="Password" style="padding-left: 40px;">
+      </div>
+    </div>
+    
+    <button onclick="login()" id="loginBtn">
+      <i class="fas fa-sign-in-alt"></i> Login
+    </button>
+    
+    <div style="margin-top: 20px; text-align: center;">
+      <p id="error"></p>
+      <div style="margin-top: 15px; font-size: 12px; color: #888;">
+        <p>Default credentials:</p>
+        <p>Email: admin@example.com</p>
+        <p>Password: admin123</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

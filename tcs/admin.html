@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | EduConnect Teacher Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/teacher.png">
+</head>
+<body class="admin">
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <span>EduConnect</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <button id="themeToggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+            
+            <button id="mobileMenuBtn" class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Teacher Portal</h3>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="materials.html"><i class="fas fa-book-open"></i> Teaching Materials</a></li>
+                <li><a href="#"><i class="fas fa-graduation-cap"></i> Subjects</a></li>
+                <li><a href="announcements.html"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Timetable</a></li>
+                <li><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                <li><a href="admin.html" class="active"><i class="fas fa-cog"></i> Admin Panel</a></li>
+                <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </aside>
+        
+        <!-- Overlay for mobile -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- User Bar -->
+            <div class="user-bar">
+                <div class="user-info">
+                    <div class="user-avatar">JS</div>
+                    <div class="user-details">
+                        <h3>John Smith</h3>
+                        <p>Mathematics Teacher | Grade 10-12</p>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <span style="background-color: rgba(139, 92, 246, 0.1); color: var(--accent-color); padding: 8px 15px; border-radius: 20px; font-weight: 600;">
+                        <i class="fas fa-user-shield"></i> Admin Access
+                    </span>
+                </div>
+            </div>
+
+            <!-- Page Header -->
+            <div style="margin-bottom: 30px;">
+                <h1>Admin Panel</h1>
+                <p>Manage teaching materials, announcements, and platform settings.</p>
+            </div>
+
+            <!-- Admin Dashboard -->
+            <div class="admin-container">
+                <!-- Upload Materials Card -->
+                <div class="admin-card">
+                    <h3><i class="fas fa-upload"></i> Upload Teaching Materials</h3>
+                    <p style="color: var(--gray-medium); margin-bottom: 25px;">Upload new files to the teaching materials library.</p>
+                    
+                    <form class="admin-form">
+                        <div class="form-group">
+                            <label for="fileTitle">File Title</label>
+                            <input type="text" id="fileTitle" placeholder="Enter file title">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fileDescription">Description</label>
+                            <textarea id="fileDescription" placeholder="Describe the content of this file"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fileSubject">Subject</label>
+                            <select id="fileSubject">
+                                <option value="">Select Subject</option>
+                                <option value="math">Mathematics</option>
+                                <option value="science">Science</option>
+                                <option value="english">English</option>
+                                <option value="history">History</option>
+                                <option value="art">Art</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fileClass">Class</label>
+                            <select id="fileClass">
+                                <option value="">Select Class</option>
+                                <option value="grade9">Grade 9</option>
+                                <option value="grade10">Grade 10</option>
+                                <option value="grade11">Grade 11</option>
+                                <option value="grade12">Grade 12</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>File Upload</label>
+                            <div class="file-upload">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag and drop files here or click to browse</p>
+                                <p style="font-size: 0.9rem; color: var(--gray-medium);">Supports PDF, PPT, DOCX up to 50MB</p>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-upload"></i> Upload Material
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Manage Announcements Card -->
+                <div class="admin-card">
+                    <h3><i class="fas fa-bullhorn"></i> Create Announcement</h3>
+                    <p style="color: var(--gray-medium); margin-bottom: 25px;">Create a new announcement for students or staff.</p>
+                    
+                    <form class="admin-form">
+                        <div class="form-group">
+                            <label for="announcementTitle">Announcement Title</label>
+                            <input type="text" id="announcementTitle" placeholder="Enter announcement title">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="announcementMessage">Message</label>
+                            <textarea id="announcementMessage" placeholder="Enter announcement content"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="announcementAudience">Audience</label>
+                            <select id="announcementAudience">
+                                <option value="all">All Students & Staff</option>
+                                <option value="students">Students Only</option>
+                                <option value="staff">Staff Only</option>
+                                <option value="math">Mathematics Department</option>
+                                <option value="grade10">Grade 10 Students</option>
+                                <option value="grade11">Grade 11 Students</option>
+                                <option value="grade12">Grade 12 Students</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="announcementPriority">Priority</label>
+                            <select id="announcementPriority">
+                                <option value="normal">Normal</option>
+                                <option value="important">Important</option>
+                                <option value="urgent">Urgent</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="announcementSchedule">Schedule</label>
+                            <select id="announcementSchedule">
+                                <option value="immediate">Publish Immediately</option>
+                                <option value="scheduled">Schedule for Later</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Publish Announcement
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Manage Subjects Card -->
+                <div class="admin-card full-width">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                        <h3><i class="fas fa-graduation-cap"></i> Manage Subjects</h3>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Add New Subject
+                        </button>
+                    </div>
+                    
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background-color: rgba(59, 130, 246, 0.1);">
+                                    <th style="padding: 15px; text-align: left; border-bottom: 1px solid var(--gray-light);">Subject Name</th>
+                                    <th style="padding: 15px; text-align: left; border-bottom: 1px solid var(--gray-light);">Department</th>
+                                    <th style="padding: 15px; text-align: left; border-bottom: 1px solid var(--gray-light);">Classes</th>
+                                    <th style="padding: 15px; text-align: left; border-bottom: 1px solid var(--gray-light);">Teacher(s)</th>
+                                    <th style="padding: 15px; text-align: left; border-bottom: 1px solid var(--gray-light);">Materials</th>
+                                    <th style="padding: 15px; text-align: left; border-bottom: 1px solid var(--gray-light);">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        <strong>Algebra I & II</strong>
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        Mathematics
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        Grade 9, Grade 10
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        John Smith, Sarah Johnson
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        <span style="background-color: rgba(59, 130, 246, 0.1); color: var(--primary-color); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">
+                                            12 files
+                                        </span>
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        <button class="btn btn-outline btn-icon">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-outline btn-icon">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        <strong>Geometry</strong>
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        Mathematics
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        Grade 10
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        John Smith
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        <span style="background-color: rgba(59, 130, 246, 0.1); color: var(--primary-color); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">
+                                            8 files
+                                        </span>
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        <button class="btn btn-outline btn-icon">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-outline btn-icon">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        <strong>Trigonometry</strong>
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        Mathematics
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        Grade 11
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        John Smith, Michael Chen
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        <span style="background-color: rgba(59, 130, 246, 0.1); color: var(--primary-color); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">
+                                            6 files
+                                        </span>
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        <button class="btn btn-outline btn-icon">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-outline btn-icon">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        <strong>Calculus</strong>
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        Mathematics
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        Grade 12
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        John Smith
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        <span style="background-color: rgba(59, 130, 246, 0.1); color: var(--primary-color); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">
+                                            10 files
+                                        </span>
+                                    </td>
+                                    <td style="padding: 15px; border-bottom: 1px solid var(--gray-light);">
+                                        <button class="btn btn-outline btn-icon">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-outline btn-icon">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <div>
+         <footer style="text-align:center; font-size:0.8rem; color:#777; margin-top:40px;">
+  Designed & Developed by <a href="https://felixodago5-arch.github.io/test/" target="_blank">FX Design 2025</a>
+</footer>
+    </div>
+</body>
+</html>

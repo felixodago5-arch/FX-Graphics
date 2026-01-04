@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | EduConnect Teacher Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/teacher.png">
+</head>
+<body class="dashboard">
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <span>EduConnect</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <button id="themeToggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+            
+            <button id="mobileMenuBtn" class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Teacher Portal</h3>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="materials.html"><i class="fas fa-book-open"></i> Teaching Materials</a></li>
+                <li><a href="#"><i class="fas fa-graduation-cap"></i> Subjects</a></li>
+                <li><a href="announcements.html"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Timetable</a></li>
+                <li><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                <li><a href="admin.html"><i class="fas fa-cog"></i> Admin Panel</a></li>
+                <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </aside>
+        
+        <!-- Overlay for mobile -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- User Bar -->
+            <div class="user-bar">
+                <div class="user-info">
+                    <div class="user-avatar">JS</div>
+                    <div class="user-details">
+                        <h3>John Smith</h3>
+                        <p>Mathematics Teacher | Grade 10-12</p>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="btn btn-outline">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Welcome Section -->
+            <div style="margin-bottom: 40px;">
+                <h1>Welcome back, John!</h1>
+                <p>Here's an overview of your teaching resources and upcoming tasks.</p>
+            </div>
+
+            <!-- Dashboard Cards -->
+            <h2 style="margin-bottom: 20px;">Quick Access</h2>
+            <div class="dashboard-cards">
+                <a href="materials.html" class="card">
+                    <div class="card-icon materials">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Teaching Materials</h3>
+                    <p>Access and manage all your teaching resources, lesson plans, and classroom materials.</p>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color);">
+                        <span id="materials-count">24</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="card">
+                    <div class="card-icon subjects">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Subjects</h3>
+                    <p>Manage your assigned subjects, curriculum, and teaching schedules.</p>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--secondary-color);">
+                        <span id="subjects-count">5</span>
+                    </div>
+                </a>
+                
+                <a href="announcements.html" class="card">
+                    <div class="card-icon announcements">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Announcements</h3>
+                    <p>View and create announcements for your students and colleagues.</p>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--accent-color);">
+                        <span id="announcements-count">3</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="card">
+                    <div class="card-icon timetable">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Timetable</h3>
+                    <p>View your teaching schedule and upcoming classes for the week.</p>
+                    <div style="font-size: 2rem; font-weight: 700; color: #f59e0b;">
+                        <span id="timetable-count">6</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Recent Activity -->
+            <div style="margin-top: 50px;">
+                <h2 style="margin-bottom: 20px;">Recent Activity</h2>
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <h3>Recent Materials</h3>
+                        <a href="materials.html" class="btn btn-outline">View All</a>
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <div style="display: flex; align-items: center; padding: 15px; background-color: rgba(59, 130, 246, 0.05); border-radius: var(--border-radius);">
+                            <div style="width: 40px; height: 40px; border-radius: 8px; background-color: #ef4444; display: flex; align-items: center; justify-content: center; color: white; margin-right: 15px;">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div style="flex: 1;">
+                                <h4 style="margin-bottom: 5px;">Algebra II - Chapter 5 Notes</h4>
+                                <p style="font-size: 0.9rem; color: var(--gray-medium);">Uploaded 2 days ago</p>
+                            </div>
+                            <button class="btn btn-primary btn-icon">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; padding: 15px; background-color: rgba(59, 130, 246, 0.05); border-radius: var(--border-radius);">
+                            <div style="width: 40px; height: 40px; border-radius: 8px; background-color: #3b82f6; display: flex; align-items: center; justify-content: center; color: white; margin-right: 15px;">
+                                <i class="fas fa-file-word"></i>
+                            </div>
+                            <div style="flex: 1;">
+                                <h4 style="margin-bottom: 5px;">Geometry Quiz Questions</h4>
+                                <p style="font-size: 0.9rem; color: var(--gray-medium);">Uploaded 4 days ago</p>
+                            </div>
+                            <button class="btn btn-primary btn-icon">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; padding: 15px; background-color: rgba(59, 130, 246, 0.05); border-radius: var(--border-radius);">
+                            <div style="width: 40px; height: 40px; border-radius: 8px; background-color: #f59e0b; display: flex; align-items: center; justify-content: center; color: white; margin-right: 15px;">
+                                <i class="fas fa-file-powerpoint"></i>
+                            </div>
+                            <div style="flex: 1;">
+                                <h4 style="margin-bottom: 5px;">Trigonometry Introduction</h4>
+                                <p style="font-size: 0.9rem; color: var(--gray-medium);">Uploaded 1 week ago</p>
+                            </div>
+                            <button class="btn btn-primary btn-icon">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+     <footer style="text-align:center; font-size:0.8rem; color:#777; margin-top:40px;">
+  Designed & Developed by <a href="https://felixodago5-arch.github.io/test/" target="_blank">FX Design 2025</a>
+</footer>
+</body>
+</html>

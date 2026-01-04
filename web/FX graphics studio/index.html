@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FX Graphics | Creative Design Solutions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add this before the closing </header> tag -->
+<div class="mobile-menu-overlay"></div>
+ <style>
+     /* CTA Strip - Can be placed anywhere in page content */
+        .cta-strip {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 40px 20px;
+            margin: 60px 0;
+            width: 100%;
+            position: relative;
+            border-top: 3px solid #3b82f6;
+            border-bottom: 3px solid #3b82f6;
+        }
+
+        .cta-strip-inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Button Styles */
+        .strip-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 35px;
+            background: white;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-width: 200px;
+        }
+
+        .strip-btn i {
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        /* Blue glow background on hover */
+        .strip-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 10px;
+        }
+
+        /* Outer glowing border */
+        .strip-btn::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                #3b82f6, 
+                #60a5fa, 
+                #93c5fd,
+                #60a5fa,
+                #3b82f6);
+            border-radius: 14px;
+            z-index: -2;
+            opacity: 0;
+            filter: blur(5px);
+            transition: opacity 0.4s ease;
+            animation: glow-border 3s linear infinite;
+            background-size: 400% 400%;
+        }
+
+        @keyframes glow-border {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Hover Effects */
+        .strip-btn:hover {
+            color: white;
+            transform: translateY(-8px);
+            box-shadow: 
+                0 15px 35px rgba(59, 130, 246, 0.4),
+                0 0 40px rgba(59, 130, 246, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .strip-btn:hover::before {
+            opacity: 1;
+        }
+
+        .strip-btn:hover::after {
+            opacity: 1;
+        }
+
+        .strip-btn:hover i {
+            transform: scale(1.3) rotate(5deg);
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+            color: #ffffff;
+        }
+
+        /* Pulse animation on buttons */
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 
+                    0 8px 25px rgba(37, 99, 235, 0.15),
+                    0 0 0 0 rgba(59, 130, 246, 0.4);
+            }
+            50% {
+                box-shadow: 
+                    0 8px 25px rgba(37, 99, 235, 0.15),
+                    0 0 0 10px rgba(59, 130, 246, 0);
+            }
+        }
+
+        .strip-btn {
+            animation: pulse-glow 3s infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cta-strip {
+                padding: 30px 15px;
+                margin: 40px 0;
+            }
+            
+            .cta-strip-inner {
+                flex-direction: column;
+                gap: 25px;
+            }
+            
+            .strip-btn {
+                width: 100%;
+                max-width: 300px;
+                padding: 16px 25px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-strip {
+                padding: 25px 10px;
+                margin: 30px 0;
+            }
+            
+            .strip-btn {
+                padding: 14px 20px;
+                font-size: 15px;
+                min-width: auto;
+            }
+            
+            .strip-btn i {
+                font-size: 18px;
+            }
+        }
+
+        /* Add subtle entrance animation */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-strip {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+ </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+    <img src="images/favicon w.png" alt="FX Graphics Logo" class="logo-img">
+</a>
+                <button class="mobile-menu-btn">☰</button>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Transform Ideas into Visual Masterpieces</h1>
+                <p>Professional graphic design solutions that elevate your brand and captivate your audience. We blend creativity with strategy to deliver stunning designs that make an impact.</p>
+                <div class="cta-buttons">
+                    <a href="portfolio.html" class="btn btn-primary pulse">View Our Work</a>
+                    <a href="contact.html" class="btn btn-secondary">Start a Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="about-image fade-in delay-1">
+    <div class="infinite-slider">
+        <div class="slider-track">
+            <!-- Original images -->
+            <img src="images/mockup1.png" alt="M1">
+            <img src="images/Document.png" alt="food">
+            <img src="images/Background.png" alt="images/Document1.pn">
+            <img src="images/nyakwere4 mockup.png" alt="">
+
+            <!-- Duplicate images for seamless loop -->
+            <img src="images/mockup1.png" alt="">
+            <img src="images/Document.png" alt="">
+            <img src="images/Background.png" alt="">
+            <img src="images/nyakwere4 mockup.png" alt="nyakwere4">
+        </div>
+    </div>
+</div>
+
+    <!-- Services Preview -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Design Services</h2>
+                <p>Comprehensive graphic design solutions tailored to your business needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card hover-lift fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Brand Identity</h3>
+                    <p>Complete branding solutions including logos, color palettes, and brand guidelines.</p>
+                </div>
+                <div class="service-card hover-lift fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Marketing Materials</h3>
+                    <p>Eye-catching posters, flyers, brochures, and banners for effective marketing.</p>
+                </div>
+                <div class="service-card hover-lift fade-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Social Media Designs</h3>
+                    <p>Engaging visuals for social media platforms to boost your online presence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+   
+
+    <!-- CTA Section -->
+    <section class="section" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ready to Elevate Your Brand?</h2>
+                <p>Let's collaborate to create designs that tell your story and drive results</p>
+            </div>
+            <div style="text-align: center;">
+                <a href="contact.html" class="btn" style="background: white; color: var(--primary);">Get in Touch Today</a>
+            </div>
+        </div>
+    </section>
+
+     <section class="cta-strip">
+        <div class="cta-strip-inner">
+            <a href="updates.html" class="strip-btn">
+                <i class="fas fa-bullhorn"></i>
+                updates
+            </a>
+
+            <a href="services.html" class="strip-btn">
+                <i class="fas fa-star"></i>
+                services
+            </a>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    
+                    <p>Creating stunning visual designs that help businesses stand out and succeed.</p>
+                </div>
+               
+
+               
+
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-envelope"></i> hello@fxgraphics.com</p>
+                    <p><i class="fas fa-phone"></i> 254106723905</p>
+                      <div class="social-links">
+                      <a href="https://www.facebook.com/share/17nQxYegds/" target="_blank" rel="noopener" aria-label="Facebook">
+                         <i class="fab fa-facebook-f"></i>
+                     </a>
+                     <a href="https://www.tiktok.com/@fxgraphics2?_r=1&_t=ZM-92QnYoAoVul" target="_blank" rel="noopener" aria-label="TikTok">
+                         <i class="fab fa-tiktok"></i>
+                     </a>
+
+                     <a href="https://www.instagram.com/fx_graphics_studio_?igsh=OWJxbDk4eGNlcXhv" target="_blank" rel="noopener" aria-label="Instagram">
+                         <i class="fab fa-instagram"></i>
+                     </a>
+
+                      <a href="https://www.behance.net/felixodago" target="_blank" rel="noopener" aria-label="Behance">
+                         <i class="fab fa-behance"></i>
+                     </a>
+
+                     <a href="https://whatsapp.com/channel/0029VbBAZRc5q08jp8d53u3u" target="_blank" rel="noopener" aria-label="WhatsApp Channel">
+                         <i class="fab fa-whatsapp"></i>
+                      </a>
+                  </div>
+                </div>
+            </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FX Graphics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+   <a href="https://wa.me/254106723905?text=Hello%20FX%20Graphics!%20I'm%20interested%20in%20your%20design%20services"
+   target="_blank"
+   rel="noopener"
+   class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+    
+
+<script src="js/gallery.js"></script>  
+<script src="js/main.js"></script>
+</body>
+</html>

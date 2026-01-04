@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements | EduConnect Teacher Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/teacher.png">
+</head>
+<body class="announcements">
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <span>EduConnect</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <button id="themeToggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+            
+            <button id="mobileMenuBtn" class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Teacher Portal</h3>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="materials.html"><i class="fas fa-book-open"></i> Teaching Materials</a></li>
+                <li><a href="#"><i class="fas fa-graduation-cap"></i> Subjects</a></li>
+                <li><a href="announcements.html" class="active"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Timetable</a></li>
+                <li><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                <li><a href="admin.html"><i class="fas fa-cog"></i> Admin Panel</a></li>
+                <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </aside>
+        
+        <!-- Overlay for mobile -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- User Bar -->
+            <div class="user-bar">
+                <div class="user-info">
+                    <div class="user-avatar">JS</div>
+                    <div class="user-details">
+                        <h3>John Smith</h3>
+                        <p>Mathematics Teacher | Grade 10-12</p>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <a href="admin.html" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> New Announcement
+                    </a>
+                </div>
+            </div>
+
+            <!-- Page Header -->
+            <div style="margin-bottom: 30px;">
+                <h1>Announcements</h1>
+                <p>View and manage announcements for your students and colleagues.</p>
+            </div>
+
+            <!-- Announcements List -->
+            <div class="announcements-list">
+                <!-- Announcement 1 -->
+                <div class="announcement-card">
+                    <div class="announcement-header">
+                        <h3>School Reopens After Summer Break</h3>
+                        <div class="announcement-date">September 1, 2023</div>
+                    </div>
+                    <p>
+                        School will reopen on September 5th after summer break. All teachers are requested to be present for the staff meeting at 9 AM in the main auditorium. Please review the updated academic calendar and prepare your lesson plans for the first week.
+                    </p>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <span style="background-color: rgba(59, 130, 246, 0.1); color: var(--primary-color); padding: 5px 10px; border-radius: 20px; font-size: 0.85rem;">
+                            Important
+                        </span>
+                        <span style="background-color: rgba(16, 185, 129, 0.1); color: var(--secondary-color); padding: 5px 10px; border-radius: 20px; font-size: 0.85rem;">
+                            All Staff
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Announcement 2 -->
+                <div class="announcement-card">
+                    <div class="announcement-header">
+                        <h3>Staff Meeting - New Academic Year Planning</h3>
+                        <div class="announcement-date">August 25, 2023</div>
+                    </div>
+                    <p>
+                        There will be a staff meeting on Friday to discuss the new academic year curriculum and assignments. Please bring your department reports and suggestions for improving student engagement. The meeting will start at 10:30 AM in Conference Room B.
+                    </p>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <span style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 5px 10px; border-radius: 20px; font-size: 0.85rem;">
+                            Meeting
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Announcement 3 -->
+                <div class="announcement-card">
+                    <div class="announcement-header">
+                        <h3>Professional Development Workshop</h3>
+                        <div class="announcement-date">August 20, 2023</div>
+                    </div>
+                    <p>
+                        A professional development workshop on "Modern Teaching Methods" will be held next week. Please register by Wednesday if you wish to attend. The workshop will cover innovative teaching strategies, technology integration, and student assessment techniques.
+                    </p>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <span style="background-color: rgba(139, 92, 246, 0.1); color: var(--accent-color); padding: 5px 10px; border-radius: 20px; font-size: 0.85rem;">
+                            Workshop
+                        </span>
+                        <span style="background-color: rgba(16, 185, 129, 0.1); color: var(--secondary-color); padding: 5px 10px; border-radius: 20px; font-size: 0.85rem;">
+                            Optional
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Announcement 4 -->
+                <div class="announcement-card">
+                    <div class="announcement-header">
+                        <h3>Mathematics Department Curriculum Review</h3>
+                        <div class="announcement-date">August 15, 2023</div>
+                    </div>
+                    <p>
+                        The mathematics department will meet next Monday to review the updated curriculum for grades 9-12. Please review the proposed changes and come prepared with feedback. We'll also discuss textbook selection and supplementary materials for the upcoming year.
+                    </p>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <span style="background-color: rgba(59, 130, 246, 0.1); color: var(--primary-color); padding: 5px 10px; border-radius: 20px; font-size: 0.85rem;">
+                            Department
+                        </span>
+                        <span style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 5px 10px; border-radius: 20px; font-size: 0.85rem;">
+                            Required
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Announcement 5 -->
+                <div class="announcement-card">
+                    <div class="announcement-header">
+                        <h3>New Learning Management System Training</h3>
+                        <div class="announcement-date">August 10, 2023</div>
+                    </div>
+                    <p>
+                        Training sessions for the new Learning Management System will be available throughout next month. The system will be fully implemented by October. Sign-up sheets are available in the staff lounge. Basic computer proficiency is recommended but not required.
+                    </p>
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <span style="background-color: rgba(139, 92, 246, 0.1); color: var(--accent-color); padding: 5px 10px; border-radius: 20px; font-size: 0.85rem;">
+                            Training
+                        </span>
+                        <span style="background-color: rgba(16, 185, 129, 0.1); color: var(--secondary-color); padding: 5px 10px; border-radius: 20px; font-size: 0.85rem;">
+                            Technology
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Load More Button -->
+            <div style="display: flex; justify-content: center; margin-top: 40px;">
+                <button class="btn btn-outline">
+                    <i class="fas fa-history"></i> Load Older Announcements
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+     <footer style="text-align:center; font-size:0.8rem; color:#777; margin-top:40px;">
+  Designed & Developed by <a href="https://felixodago5-arch.github.io/test/" target="_blank">FX Design 2025</a>
+</footer>
+</body>
+</html>

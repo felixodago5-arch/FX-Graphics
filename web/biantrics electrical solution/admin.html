@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/png" href="images/stima.jpg">
+  <meta charset="utf-8">
+  <title>Admin - Testimonials</title>
+  <style>
+    /* ( CSS ) */
+    /* Base Reset & Fonts */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap');
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); color: #334155; min-height: 100vh; padding: 40px 20px; position: relative; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 25%), radial-gradient(circle at 85% 30%, rgba(14, 165, 233, 0.05) 0%, transparent 25%); z-index: -1; }
+    .admin-container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 24px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 20px 40px -20px rgba(30,41,59,0.15), 0 0 0 1px rgba(255,255,255,0.9); overflow: hidden; position: relative; }
+    .logo-section { padding: 20px 40px; text-align: center; border-bottom: 1px solid #f1f5f9; }
+    .logo-image { max-width: 150px; max-height: 100px; object-fit: contain; }
+    h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 3rem; font-weight: 700; color: #1e40af; padding: 40px 40px 20px; margin-bottom: 10px; letter-spacing: -0.025em; position: relative; }
+    h1::after { content: ''; position: absolute; bottom: 15px; left: 40px; width: 60px; height: 4px; background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 2px; }
+    h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.75rem; font-weight: 600; color: #1e293b; margin: 30px 40px 20px; padding-bottom: 12px; border-bottom: 2px solid #f1f5f9; }
+    .form-section { padding: 0 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    input, textarea { width: 100%; padding: 16px 20px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; color: #334155; font-size: 15px; font-weight: 400; transition: all 0.2s ease; margin: 5px 0; }
+    input:focus, textarea:focus { outline: none; border-color: #3b82f6; background: white; box-shadow: 0 0 0 4px rgba(59,130,246,0.1), 0 4px 6px -1px rgba(59,130,246,0.1); }
+    input::placeholder, textarea::placeholder { color: #94a3b8; }
+    button { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; padding: 16px 32px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; width: 200px; margin: 20px 40px 40px; letter-spacing: 0.3px; position: relative; overflow: hidden; }
+    button::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent); transform: translateX(-100%); }
+    button:hover::after { animation: shimmer 1s ease; }
+    button:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(59,130,246,0.25), 0 8px 15px rgba(59,130,246,0.15); }
+    button:active { transform: translateY(0); }
+    @keyframes shimmer { 100% { transform: translateX(100%); } }
+    #testimonials { padding: 20px 40px 40px; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
+    .testimonial { background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 25px; position: relative; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+    .testimonial:hover { transform: translateY(-4px); border-color: #3b82f6; box-shadow: 0 20px 40px -20px rgba(59,130,246,0.3), 0 0 0 1px rgba(59,130,246,0.1); }
+    .testimonial::before { content: '"'; position: absolute; top: 20px; right: 25px; font-size: 4rem; color: #dbeafe; font-family: 'Plus Jakarta Sans', serif; font-weight: 700; line-height: 1; }
+    .testimonial strong { display: block; font-size: 1.1rem; color: #3b82f6; margin-bottom: 8px; font-weight: 700; }
+    .testimonial br { margin-bottom: 12px; display: block; content: ''; }
+    .testimonial button { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; border: none; padding: 10px 24px; width: auto; margin: 20px 0 0; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(239,68,68,0.2); }
+    .testimonial button:hover { background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); box-shadow: 0 12px 20px rgba(239,68,68,0.25); }
+    .rating-stars { display: inline-block; margin-left: 10px; color: #fbbf24; }
+    .rating-stars::before { content: '★★★★★'; letter-spacing: 3px; }
+    #testimonials:empty::before { content: 'Loading testimonials...'; color: #94a3b8; font-style: italic; grid-column: 1 / -1; text-align: center; padding: 60px; background: #f8fafc; border-radius: 12px; border: 2px dashed #e2e8f0; }
+    .input-group { position: relative; }
+    .input-group label { display: block; margin-bottom: 8px; color: #475569; font-size: 14px; font-weight: 500; letter-spacing: 0.3px; }
+    .section-separator { height: 1px; background: linear-gradient(90deg, transparent, #e2e8f0, transparent); margin: 0 40px; }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 5px; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #3b82f6, #60a5fa); border-radius: 5px; }
+    ::-webkit-scrollbar-thumb:hover { background: linear-gradient(135deg, #2563eb, #3b82f6); }
+    @media (max-width: 768px) {
+      h1 { font-size: 2.25rem; padding: 30px 20px 15px; }
+      h1::after { left: 20px; bottom: 10px; }
+      h2 { margin: 25px 20px 15px; font-size: 1.5rem; }
+      .form-section, #testimonials { padding: 0 20px; grid-template-columns: 1fr; }
+      button { margin: 20px 20px 30px; width: calc(100% - 40px); }
+      .section-separator { margin: 0 20px; }
+    }
+    .testimonial::after { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, #3b82f6, #60a5fa); border-radius: 4px 0 0 4px; }
+    *:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
+
+    /* Login small panel styles */
+    #loginPanel { padding: 20px 40px; display:flex; gap:12px; align-items:center; justify-content:flex-end; }
+    #loginPanel input { width:200px; margin:0; }
+    #loginMessage { color:#b91c1c; margin-left:12px; font-weight:600; }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <div class="logo-section">
+      <img id="logo" src="images/stima.jpg" alt="Company Logo" class="logo-image">
+    </div>
+
+    
+
+      <!-- Logout (shown when logged in) -->
+      <div id="logoutArea" style="display:none;">
+        <span style="margin-right:12px;color:#475569">Signed in</span>
+        <button id="logoutBtn" style="background:linear-gradient(135deg,#ef4444,#dc2626);width:auto;padding:10px 18px">Logout</button>
+      </div>
+    </div>
+
+    <h1>Testimonials Admin</h1>
+
+    <h2>Add New Testimonial</h2>
+    <div class="form-section">
+      <div class="input-group">
+        <label for="name">Full Name</label>
+        <input id="name" placeholder="John Smith">
+      </div>
+      <div class="input-group">
+        <label for="company">Company & Position</label>
+        <input id="company" placeholder="Acme Inc, CEO">
+      </div>
+      <div class="input-group">
+        <label for="avatar">Avatar URL (Optional)</label>
+        <input id="avatar" placeholder="https://example.com/avatar.jpg">
+      </div>
+      <div class="input-group">
+        <label for="rating">Rating (1-5)</label>
+        <input id="rating" type="number" placeholder="5" min="1" max="5" value="5">
+      </div>
+      <div class="input-group" style="grid-column: span 2;">
+        <label for="text">Testimonial Content</label>
+        <textarea id="text" placeholder="Share your experience..." rows="4"></textarea>
+      </div>
+    </div>
+    <button id="addBtn">
+      <svg style="display: inline-block; margin-right: 8px; vertical-align: middle;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12h14"/>
+      </svg>
+      Add Testimonial
+    </button>
+
+    <div class="section-separator"></div>
+
+    <h2>Existing Testimonials</h2>
+    <div id="testimonials">Loading...</div>
+  </div>
+
+<script>
+/*
+  Notes:
+  - Backend expects session cookie; we must include credentials in fetch calls.
+  - Login calls POST /admin/login with { username, password }.
+  - Protected API calls require the session cookie (credentials:'include').
+*/
+
+const loginFields = document.getElementById('loginFields');
+const logoutArea = document.getElementById('logoutArea');
+const loginMsg = document.getElementById('loginMessage');
+
+async function checkStatus() {
+  try {
+    const res = await fetch('/admin/status', { credentials: 'include' });
+    const json = await res.json();
+    if (json.isAdmin) {
+      loginFields.style.display = 'none';
+      logoutArea.style.display = 'flex';
+      loadTestimonials();
+    } else {
+      loginFields.style.display = 'flex';
+      logoutArea.style.display = 'none';
+      document.getElementById('testimonials').innerHTML = '<p style="color:#94a3b8;padding:20px">Login to manage testimonials.</p>';
+    }
+  } catch (err) {
+    console.error('status check failed', err);
+  }
+}
+
+document.getElementById('loginBtn').addEventListener('click', async () => {
+  const username = document.getElementById('adminUser').value.trim();
+  const password = document.getElementById('adminPass').value;
+  loginMsg.textContent = '';
+  if (!username || !password) { loginMsg.textContent = 'Enter username & password'; return; }
+
+  const res = await fetch('/admin/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify({ username, password })
+  });
+
+  if (res.ok) {
+    document.getElementById('adminUser').value = '';
+    document.getElementById('adminPass').value = '';
+    checkStatus();
+  } else {
+    const j = await res.json().catch(()=>({ error: 'Login failed' }));
+    loginMsg.textContent = j.error || 'Login failed';
+  }
+});
+
+document.getElementById('logoutBtn').addEventListener('click', async () => {
+  await fetch('/admin/logout', { method: 'POST', credentials: 'include' });
+  checkStatus();
+});
+
+// Add testimonial
+document.getElementById('addBtn').addEventListener('click', async () => {
+  const payload = {
+    name: document.getElementById('name').value.trim(),
+    company: document.getElementById('company').value.trim(),
+    text: document.getElementById('text').value.trim(),
+    rating: Number(document.getElementById('rating').value) || 5,
+    avatar: document.getElementById('avatar').value.trim()
+  };
+
+  if (!payload.name || !payload.text) {
+    alert('Name and testimonial text are required.');
+    return;
+  }
+
+  const res = await fetch('/api/testimonials', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify(payload)
+  });
+
+  if (res.ok) {
+    // clear inputs
+    document.getElementById('name').value = '';
+    document.getElementById('company').value = '';
+    document.getElementById('text').value = '';
+    document.getElementById('avatar').value = '';
+    document.getElementById('rating').value = 5;
+    await loadTestimonials();
+  } else {
+    const j = await res.json().catch(()=>({error:'Add failed'}));
+    alert(j.error || 'Add failed');
+  }
+});
+
+// Load and render testimonials (editable for admin)
+async function loadTestimonials() {
+  const res = await fetch('/api/testimonials', { credentials: 'include' });
+  if (!res.ok) {
+    document.getElementById('testimonials').innerHTML = '<p style="color:#b91c1c">Failed to load testimonials.</p>';
+    return;
+  }
+  const data = await res.json();
+  const container = document.getElementById('testimonials');
+  container.innerHTML = '';
+  if (!data.length) {
+    container.innerHTML = '<p style="color:#94a3b8;padding:20px">No testimonials yet.</p>';
+    return;
+  }
+
+  data.forEach(t => {
+    const div = document.createElement('div');
+    div.className = 'testimonial';
+    div.innerHTML = `
+      <strong>${escapeHtml(t.name)} ${t.company ? `(${escapeHtml(t.company)})` : ''}</strong>
+      <div style="margin:10px 0">${escapeHtml(t.text)}</div>
+      <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
+        <div class="rating-stars" title="Rating: ${t.rating || 0}" style="--rating:${t.rating || 0}"></div>
+        <div style="flex:1"></div>
+        <button data-id="${t._id}" class="deleteBtn">Delete</button>
+      </div>
+    `;
+
+    // style rating visually using background trick
+    const stars = div.querySelector('.rating-stars');
+    const rating = Number(t.rating) || 0;
+    stars.style.width = '5ch';
+    stars.style.background = `linear-gradient(90deg, #fbbf24 ${Math.max(0, Math.min(100, rating*20))}%, #e2e8f0 ${rating*20}%)`;
+    stars.style.webkitBackgroundClip = 'text';
+    stars.style.webkitTextFillColor = 'transparent';
+    stars.style.fontWeight = '700';
+
+    // attach delete handler
+    div.querySelector('.deleteBtn').addEventListener('click', async (e) => {
+      const id = e.target.dataset.id;
+      if (!confirm('Delete this testimonial?')) return;
+      const delRes = await fetch(`/api/testimonials/${id}`, {
+        method: 'DELETE',
+        credentials: 'include'
+      });
+      if (delRes.ok) {
+        loadTestimonials();
+      } else {
+        alert('Delete failed');
+      }
+    });
+
+    container.appendChild(div);
+  });
+}
+
+function escapeHtml(s){ if (!s) return ''; return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+checkStatus();
+</script>
+
+<footer style="text-align:center; font-size:0.8rem; color:#777; margin-top:40px;">
+  Designed & Developed by <a href="https://felixodago5-arch.github.io/test/" target="_blank">FX Design 2025</a>
+</footer>
+</body>
+</html>

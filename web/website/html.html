@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelCraft | Modern Graphics Agency</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light mode variables (default) */
+            --primary-blue: #2563eb;
+            --dark-blue: #1e40af;
+            --light-blue: #60a5fa;
+            --white: #ffffff;
+            --off-white: #f8fafc;
+            --gray-light: #e2e8f0;
+            --gray: #64748b;
+            --gray-dark: #334155;
+            --black: #0f172a;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-strong: 0 15px 35px rgba(0, 0, 0, 0.08);
+            --border-radius: 12px;
+            --border-radius-sm: 8px;
+            --transition: all 0.3s ease;
+            --max-width: 1200px;
+            
+            /* Background and text colors */
+            --bg-primary: var(--white);
+            --bg-secondary: var(--off-white);
+            --bg-card: var(--white);
+            --text-primary: var(--black);
+            --text-secondary: var(--gray-dark);
+            --text-muted: var(--gray);
+            --border-color: var(--gray-light);
+            --header-bg: var(--white);
+        }
+        
+        /* Dark mode variables */
+        [data-theme="dark"] {
+            --primary-blue: #3b82f6;
+            --dark-blue: #1d4ed8;
+            --light-blue: #93c5fd;
+            --white: #0f172a;
+            --off-white: #1e293b;
+            --gray-light: #334155;
+            --gray: #94a3b8;
+            --gray-dark: #cbd5e1;
+            --black: #f8fafc;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            --shadow-strong: 0 15px 35px rgba(0, 0, 0, 0.3);
+            
+            /* Dark mode specific overrides */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --header-bg: #0f172a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        h3 {
+            font-size: 1.75rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: var(--border-radius-sm);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--header-bg);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--text-secondary);
+            position: relative;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-blue);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-blue);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        /* Theme Toggle Button */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-primary);
+        }
+        
+        .theme-toggle:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            transform: rotate(15deg);
+        }
+        
+        .theme-toggle i {
+            font-size: 1.2rem;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+        
+        /* Hero Sections with Banner Background */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.85) 0%, rgba(15, 23, 42, 0.85) 100%);
+            z-index: -1;
+        }
+        
+        .page-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 120px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1558655146-364adaf1fcc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+        
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1, .page-hero h1 {
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero p, .page-hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        /* New Homepage Sections */
+        
+        /* Why Choose Us Section */
+        .why-choose-us {
+            background-color: var(--bg-primary);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+            border-color: var(--primary-blue);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+        
+        .feature-number {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            line-height: 40px;
+            text-align: center;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Our Process Section */
+        .our-process {
+            background-color: var(--bg-secondary);
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 4rem;
+        }
+        
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--border-color);
+            z-index: 1;
+        }
+        
+        .process-step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 22%;
+        }
+        
+        .step-circle {
+            width: 80px;
+            height: 80px;
+            background-color: var(--bg-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-blue);
+            font-size: 2rem;
+            border: 3px solid var(--primary-blue);
+            box-shadow: var(--shadow);
+        }
+        
+        .step-number {
+            display: block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            line-height: 30px;
+            text-align: center;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        /* Pages */
+        .page {
+            display: none;
+            padding-top: 0;
+            min-height: 80vh;
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .page-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--text-muted);
+        }
+        
+        /* Services Page */
+        .services-section {
+            padding-top: 5rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+            border-color: var(--primary-blue);
+        }
+        
+        .coming-soon-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-blue);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+        }
+        
+        /* Email Signup Modal */
+        .email-signup-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .email-signup-modal.active {
+            display: flex;
+        }
+        
+        .email-signup-box {
+            background-color: var(--bg-primary);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-strong);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            border: 1px solid var(--border-color);
+            animation: slideUp 0.4s ease;
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+        
+        .modal-header {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .modal-header h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+        
+        .modal-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        
+        .modal-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+        }
+        
+        .email-signup-form {
+            margin-top: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+        
+        .form-submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 0.5rem;
+        }
+        
+        .form-submit-btn:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 1rem;
+            background-color: rgba(34, 197, 94, 0.1);
+            border-radius: var(--border-radius-sm);
+            color: #059669;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+        
+        .success-message i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        /* Portfolio Page */
+        .portfolio-section {
+            padding-top: 5rem;
+        }
+        
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-secondary);
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+            border-color: var(--primary-blue);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+        
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+        
+        /* About Page */
+        .about-section {
+            padding-top: 5rem;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-strong);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            display: block;
+        }
+        
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Testimonials Page */
+        .testimonials-section {
+            padding-top: 5rem;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            margin: 2rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .client-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--primary-blue);
+        }
+        
+        .client-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Contact Page */
+        .contact-section {
+            padding-top: 5rem;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-form {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-about p {
+            color: var(--text-muted);
+        }
+        
+        .footer-links h3, .footer-social h3 {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-muted);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-blue);
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--bg-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .process-steps {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 3rem;
+            }
+            
+            .process-step {
+                width: 45%;
+                margin-bottom: 2rem;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 0;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--header-bg);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .stats {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2rem;
+            }
+            
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .page-hero {
+                padding-top: 100px;
+                min-height: 60vh;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .email-signup-box {
+                padding: 2rem 1.5rem;
+                width: 95%;
+            }
+            
+            .process-step {
+                width: 100%;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-card {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .nav-right {
+                gap: 1rem;
+            }
+            
+            .page-hero {
+                min-height: 50vh;
+                padding-top: 80px;
+            }
+            
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Theme transition smoothness */
+        * {
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Email Signup Modal -->
+    <div class="email-signup-modal" id="emailSignupModal">
+        <div class="email-signup-box">
+            <button class="modal-close" id="modalCloseBtn">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-bell" id="modalServiceIcon"></i>
+                </div>
+                <h3 id="modalServiceTitle">Service Launch Notification</h3>
+                <p id="modalServiceDescription">Enter your email to be notified when this service launches.</p>
+            </div>
+            
+            <form class="email-signup-form" id="emailSignupForm">
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" class="form-control" placeholder="you@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupName">Name (Optional)</label>
+                    <input type="text" id="signupName" class="form-control" placeholder="Your name">
+                </div>
+                
+                <button type="submit" class="form-submit-btn">Notify Me on Launch</button>
+                
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Thank you! We'll notify you when this service launches.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">PixelCraft</a>
+                
+                <div class="nav-right">
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                        <li><a href="#services" class="nav-link" data-page="services">Services</a></li>
+                        <li><a href="#portfolio" class="nav-link" data-page="portfolio">Portfolio</a></li>
+                        <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+                        <li><a href="#testimonials" class="nav-link" data-page="testimonials">Testimonials</a></li>
+                        <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+                    </ul>
+                    
+                    <div class="theme-toggle" id="themeToggle" title="Toggle dark/light mode">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    
+                    <div class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area for Pages -->
+    <main id="main-content">
+        <!-- Home Page -->
+        <section class="page active" id="home-page">
+            <!-- Hero Section -->
+            <div class="hero" id="home">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Crafting Visual Experiences That Captivate</h1>
+                        <p>We're a modern graphics agency specializing in bold design, strategic branding, and innovative visual solutions that help your business stand out.</p>
+                        <div class="btn-group">
+                            <a href="#contact" class="btn btn-primary" data-page="contact">Start a Project</a>
+                            <a href="#portfolio" class="btn btn-secondary" data-page="portfolio">View Our Work</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Why Choose Us Section -->
+            <section class="why-choose-us">
+                <div class="container">
+                    <div class="page-header">
+                        <h2>Why Choose PixelCraft</h2>
+                        <p>Discover what sets us apart and why leading brands trust us with their visual identity and design needs.</p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>Award-Winning Expertise</h3>
+                            <p>Our team includes industry-recognized designers with 8+ years of experience delivering exceptional results for global brands.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3>Strategic Approach</h3>
+                            <p>We combine creative excellence with data-driven strategy to ensure your designs not only look beautiful but also drive business results.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Client-Centric Collaboration</h3>
+                            <p>You're involved at every stage. We believe the best results come from true partnership and transparent communication.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3>Future-Proof Solutions</h3>
+                            <p>We design with tomorrow in mind, creating scalable visual systems that grow with your business and adapt to emerging trends.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Our Process Section -->
+            <section class="our-process">
+                <div class="container">
+                    <div class="page-header">
+                        <h2>Our Proven Process</h2>
+                        <p>A transparent, collaborative workflow that ensures your vision is realized with precision and excellence at every stage.</p>
+                    </div>
+                    
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="step-circle">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <span class="step-number">1</span>
+                            <h3>Discovery</h3>
+                            <p>We dive deep into your brand, goals, and audience to create a strategic foundation for your project.</p>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-circle">
+                                <i class="fas fa-pencil-ruler"></i>
+                            </div>
+                            <span class="step-number">2</span>
+                            <h3>Strategy</h3>
+                            <p>Developing creative concepts, wireframes, and a clear roadmap for execution and success.</p>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-circle">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <span class="step-number">3</span>
+                            <h3>Execution</h3>
+                            <p>Bringing designs to life with meticulous attention to detail, regular feedback loops, and refined iterations.</p>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-circle">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                            <span class="step-number">4</span>
+                            <h3>Delivery</h3>
+                            <p>Final quality assurance, comprehensive handover, and ongoing support to ensure lasting success.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <div class="container">
+                    <div class="cta-content">
+                        <h2>Ready to Elevate Your Brand?</h2>
+                        <p>Let's discuss how our strategic design approach can transform your visual identity and drive measurable results for your business.</p>
+                        <div class="btn-group">
+                            <a href="#contact" class="btn btn-primary" data-page="contact" style="background-color: var(--white); color: var(--primary-blue);">Start Your Project</a>
+                            <a href="#services" class="btn btn-secondary" data-page="services" style="border-color: var(--white); color: var(--white);">Explore Services</a>
+                        </div>
+                        <p style="margin-top: 2rem; font-size: 1rem; opacity: 0.8;">Schedule a free 30-minute consultation to discuss your project</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+        
+        <!-- Services Page -->
+        <section class="page" id="services-page">
+            <div class="page-hero">
+                <div class="container">
+                    <div class="page-hero-content">
+                        <h1>Creative Services That Drive Results</h1>
+                        <p>From brand identity to digital experiences, we offer a full spectrum of design services crafted with precision and strategic thinking.</p>
+                        <div class="btn-group">
+                            <a href="#contact" class="btn btn-primary" data-page="contact">Discuss Your Project</a>
+                            <a href="#portfolio" class="btn btn-secondary" data-page="portfolio">See Our Work</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="services-section">
+                <div class="container">
+                    <div class="page-header">
+                        <h2>Our Comprehensive Services</h2>
+                        <p>Each service is designed to elevate your brand and engage your audience through innovative design solutions.</p>
+                    </div>
+                    
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h3>Brand Identity</h3>
+                            <p>Create a cohesive brand experience with custom logos, color palettes, typography, and brand guidelines that tell your unique story.</p>
+                        </div>
+                        
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <h3>UI/UX Design</h3>
+                            <p>Design intuitive, user-centered digital interfaces that provide seamless experiences across all devices and platforms.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <h3>Marketing Design</h3>
+                            <p>Eye-catching marketing materials, social media graphics, and advertising campaigns that convert viewers into customers.</p>
+                        </div>
+                        
+                        <!-- COMING SOON Service Card 1 -->
+                        <div class="service-card coming-soon-card" data-service-id="ai-design" data-service-icon="fas fa-robot" data-service-title="AI-Powered Design" data-service-description="Intelligent design solutions powered by artificial intelligence to create personalized, data-driven visual experiences.">
+                            <div class="coming-soon-badge">Coming Soon</div>
+                            <div class="service-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3>AI-Powered Design</h3>
+                            <p>Intelligent design solutions powered by artificial intelligence to create personalized, data-driven visual experiences.</p>
+                            <p class="click-notice" style="color: var(--primary-blue); font-size: 0.9rem; font-weight: 600; margin-top: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-bell"></i> Click to get notified on launch
+                            </p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <h3>Print & Publication</h3>
+                            <p>From business cards to annual reports, we design print materials that make a lasting impression with meticulous attention to detail.</p>
+                        </div>
+                        
+                        <!-- COMING SOON Service Card 2 -->
+                        <div class="service-card coming-soon-card" data-service-id="ar-vr" data-service-icon="fas fa-vr-cardboard" data-service-title="AR/VR Experiences" data-service-description="Immersive augmented and virtual reality experiences that transform how users interact with brands in digital spaces.">
+                            <div class="coming-soon-badge">Coming Soon</div>
+                            <div class="service-icon">
+                                <i class="fas fa-vr-cardboard"></i>
+                            </div>
+                            <h3>AR/VR Experiences</h3>
+                            <p>Immersive augmented and virtual reality experiences that transform how users interact with brands in digital spaces.</p>
+                            <p class="click-notice" style="color: var(--primary-blue); font-size: 0.9rem; font-weight: 600; margin-top: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-bell"></i> Click to get notified on launch
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Portfolio Page -->
+        <section class="page" id="portfolio-page">
+            <div class="page-hero">
+                <div class="container">
+                    <div class="page-hero-content">
+                        <h1>Our Creative Portfolio</h1>
+                        <p>Explore our recent projects that showcase innovative design, attention to detail, and impactful visual communication across various industries.</p>
+                        <div class="btn-group">
+                            <a href="#contact" class="btn btn-primary" data-page="contact">Start Your Project</a>
+                            <a href="#services" class="btn btn-secondary" data-page="services">View Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-section">
+                <div class="container">
+                    <div class="page-header">
+                        <h2>Featured Projects</h2>
+                        <p>Browse our diverse portfolio of branding, web design, print, and motion graphics projects that have helped clients achieve their goals.</p>
+                    </div>
+                    
+                    <div class="portfolio-filter">
+                        <button class="filter-btn active" data-filter="all">All Projects</button>
+                        <button class="filter-btn" data-filter="branding">Branding</button>
+                        <button class="filter-btn" data-filter="web">Web Design</button>
+                        <button class="filter-btn" data-filter="print">Print</button>
+                        <button class="filter-btn" data-filter="motion">Motion</button>
+                    </div>
+                    
+                    <div class="portfolio-grid" id="portfolioGrid">
+                        <!-- Portfolio items will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Page -->
+        <section class="page" id="about-page">
+            <div class="page-hero">
+                <div class="container">
+                    <div class="page-hero-content">
+                        <h1>Our Creative Journey</h1>
+                        <p>Founded in 2015, PixelCraft has grown from a small studio to a leading graphics agency trusted by companies worldwide.</p>
+                        <div class="btn-group">
+                            <a href="#contact" class="btn btn-primary" data-page="contact">Work With Us</a>
+                            <a href="#testimonials" class="btn btn-secondary" data-page="testimonials">Client Stories</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-section">
+                <div class="container">
+                    <div class="about-content">
+                        <div class="about-img">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Our creative team at work">
+                        </div>
+                        
+                        <div class="about-text">
+                            <h2>Driven by Creativity, Guided by Strategy</h2>
+                            <p>At PixelCraft, we believe that great design is more than just aesthetics—it's a powerful tool for communication, connection, and conversion. Our approach combines creative excellence with strategic thinking to deliver designs that not only look beautiful but also drive results.</p>
+                            <p>Our diverse team of designers, strategists, and creative thinkers collaborate closely with each client to understand their unique challenges and goals, crafting custom solutions that elevate brands and engage audiences.</p>
+                            
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">150+</span>
+                                    <span class="stat-label">Projects Completed</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">8+</span>
+                                    <span class="stat-label">Years Experience</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">50+</span>
+                                    <span class="stat-label">Happy Clients</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Page -->
+        <section class="page" id="testimonials-page">
+            <div class="page-hero">
+                <div class="container">
+                    <div class="page-hero-content">
+                        <h1>Client Success Stories</h1>
+                        <p>Discover what our clients have to say about working with PixelCraft and the impact our designs have made on their businesses.</p>
+                        <div class="btn-group">
+                            <a href="#contact" class="btn btn-primary" data-page="contact">Join Our Happy Clients</a>
+                            <a href="#portfolio" class="btn btn-secondary" data-page="portfolio">See Case Studies</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonials-section">
+                <div class="container">
+                    <div class="page-header">
+                        <h2>What Our Clients Say</h2>
+                        <p>Don't just take our word for it. Here's what our clients have to say about working with PixelCraft.</p>
+                    </div>
+                    
+                    <div class="testimonial-slider">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"PixelCraft transformed our brand identity completely. Their team understood our vision from day one and delivered a comprehensive brand system that has elevated our market presence significantly. The results have exceeded our expectations!"</p>
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Client Avatar">
+                                </div>
+                                <div class="client-details">
+                                    <h4>Michael Rodriguez</h4>
+                                    <p>CEO, TechVision Inc.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card" style="margin-top: 2rem;">
+                            <p class="testimonial-text">"Working with PixelCraft was a game-changer for our digital presence. Their UI/UX design expertise helped us create an intuitive platform that our users love. The attention to detail and strategic approach made all the difference."</p>
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Client Avatar">
+                                </div>
+                                <div class="client-details">
+                                    <h4>Sarah Johnson</h4>
+                                    <p>Product Director, Innovate Labs</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-card" style="margin-top: 2rem;">
+                            <p class="testimonial-text">"The motion graphics created by PixelCraft for our product launch went viral on social media. Their creative approach and technical expertise helped us communicate complex ideas simply and beautifully. Highly recommended!"</p>
+                            <div class="client-info">
+                                <div class="client-avatar">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Client Avatar">
+                                </div>
+                                <div class="client-details">
+                                    <h4>David Chen</h4>
+                                    <p>Marketing Director, SolarTech Solutions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Page -->
+        <section class="page" id="contact-page">
+            <div class="page-hero">
+                <div class="container">
+                    <div class="page-hero-content">
+                        <h1>Let's Create Something Amazing</h1>
+                        <p>Ready to bring your vision to life? Contact us today to discuss your project and discover how we can help elevate your brand through exceptional design.</p>
+                        <div class="btn-group">
+                            <a href="#services" class="btn btn-primary" data-page="services">Explore Services</a>
+                            <a href="#portfolio" class="btn btn-secondary" data-page="portfolio">See Our Work</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-section">
+                <div class="container">
+                    <div class="contact-content">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h3>Our Studio</h3>
+                                    <p>123 Design Street, Creative District<br>New York, NY 10001</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h3>Phone</h3>
+                                    <p>+1 (555) 123-4567<br>Mon-Fri, 9am-6pm EST</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h3>Email</h3>
+                                    <p>hello@pixelcraft.com<br>responses within 24 hours</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h3>Office Hours</h3>
+                                    <p>Monday - Friday: 9am - 6pm EST<br>Weekend consultations by appointment</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-form">
+                            <h3>Start Your Project</h3>
+                            <p style="margin-bottom: 2rem;">Fill out the form below and we'll get back to you within 24 hours.</p>
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="company">Company (Optional)</label>
+                                    <input type="text" id="company" class="form-control" placeholder="Your company name">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="service">Service Interested In</label>
+                                    <select id="service" class="form-control">
+                                        <option value="">Select a service</option>
+                                        <option value="branding">Brand Identity</option>
+                                        <option value="ui-ux">UI/UX Design</option>
+                                        <option value="marketing">Marketing Design</option>
+                                        <option value="motion">Motion Graphics</option>
+                                        <option value="print">Print Design</option>
+                                        <option value="strategy">Design Strategy</option>
+                                        <option value="multiple">Multiple Services</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">Project Details</label>
+                                    <textarea id="message" class="form-control" placeholder="Tell us about your project, goals, timeline, and budget..." required rows="5"></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">PixelCraft</div>
+                    <p>We're a modern graphics agency specializing in bold design, strategic branding, and innovative visual solutions that help businesses stand out.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home" data-page="home">Home</a></li>
+                        <li><a href="#services" data-page="services">Services</a></li>
+                        <li><a href="#portfolio" data-page="portfolio">Portfolio</a></li>
+                        <li><a href="#about" data-page="about">About</a></li>
+                        <li><a href="#contact" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://twitter.com/yourusername" target="_blank" class="social-icon" title="Follow us on X (Twitter)">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://instagram.com/yourusername" target="_blank" class="social-icon" title="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-icon" title="Follow us on LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://dribbble.com/yourusername" target="_blank" class="social-icon" title="Follow us on Dribbble">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 PixelCraft Graphics Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const navLinksItems = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        const portfolioGrid = document.getElementById('portfolioGrid');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const contactForm = document.getElementById('contactForm');
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Email Signup Modal Elements
+        const emailSignupModal = document.getElementById('emailSignupModal');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+        const modalServiceIcon = document.getElementById('modalServiceIcon');
+        const modalServiceTitle = document.getElementById('modalServiceTitle');
+        const modalServiceDescription = document.getElementById('modalServiceDescription');
+        const emailSignupForm = document.getElementById('emailSignupForm');
+        const successMessage = document.getElementById('successMessage');
+        const comingSoonCards = document.querySelectorAll('.coming-soon-card');
+        
+        // Portfolio Data
+        const portfolioItems = [
+            { id: 1, category: 'branding', title: 'NovaTech Brand Identity', description: 'Complete brand identity for a tech startup', image: 'images/49.png' },
+            { id: 2, category: 'web', title: 'EcoLife Website Redesign', description: 'Responsive website for sustainable living brand', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1415&q=80' },
+            { id: 3, category: 'print', title: 'Vogue Magazine Layout', description: 'Editorial design for fashion magazine feature', image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80' },
+            { id: 4, category: 'motion', title: 'Solar Energy Explainer Video', description: 'Motion graphics for renewable energy company', image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1453&q=80' },
+            { id: 5, category: 'branding', title: 'Artisan Coffee Packaging', description: 'Packaging design for premium coffee brand', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=1389&q=80' },
+            { id: 6, category: 'web', title: 'HealthPlus App Interface', description: 'Mobile app UI for healthcare platform', image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80' },
+            { id: 7, category: 'print', title: 'Corporate Annual Report', description: 'Annual report design for financial institution', image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80' },
+            { id: 8, category: 'motion', title: 'Product Launch Animation', description: '3D animation for new tech product reveal', image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1368&q=80' },
+            { id: 9, category: 'branding', title: 'UrbanFit Gym Rebrand', description: 'Complete rebrand for fitness chain', image: 'https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80' }
+        ];
+        
+        // Theme Management
+        function getCurrentTheme() {
+            return localStorage.getItem('theme') || 'light';
+        }
+        
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            // Update the toggle button icon
+            if (theme === 'dark') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeToggle.setAttribute('title', 'Switch to light mode');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeToggle.setAttribute('title', 'Switch to dark mode');
+            }
+        }
+        
+        function toggleTheme() {
+            const currentTheme = getCurrentTheme();
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        }
+        
+        // Check for saved theme or user preference
+        function initTheme() {
+            const savedTheme = getCurrentTheme();
+            
+            // Check for OS preference if no saved theme
+            if (!localStorage.getItem('theme')) {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (prefersDark) {
+                    setTheme('dark');
+                    return;
+                }
+            }
+            
+            setTheme(savedTheme);
+        }
+        
+        // Email Signup Modal Functions
+        function openEmailSignupModal(serviceData) {
+            // Set modal content based on the clicked service card
+            modalServiceIcon.className = serviceData.icon;
+            modalServiceTitle.textContent = `Notify Me: ${serviceData.title}`;
+            modalServiceDescription.textContent = serviceData.description;
+            
+            // Reset form
+            emailSignupForm.reset();
+            successMessage.style.display = 'none';
+            
+            // Show modal
+            emailSignupModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+        
+        function closeEmailSignupModal() {
+            emailSignupModal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+        
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Navigation between pages
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Get the target page
+                const targetPage = link.getAttribute('data-page');
+                
+                // Update active link
+                navLinksItems.forEach(item => item.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Show the target page
+                showPage(targetPage);
+                
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                }
+                
+                // Scroll to top of the page
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+        
+        // Show page function
+        function showPage(pageId) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show the selected page
+            const targetPage = document.getElementById(`${pageId}-page`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                
+                // If portfolio page, render portfolio items
+                if (pageId === 'portfolio') {
+                    renderPortfolioItems('all');
+                }
+            }
+        }
+        
+        // Render portfolio items
+        function renderPortfolioItems(filter) {
+            portfolioGrid.innerHTML = '';
+            
+            let filteredItems;
+            if (filter === 'all') {
+                filteredItems = portfolioItems;
+            } else {
+                filteredItems = portfolioItems.filter(item => item.category === filter);
+            }
+            
+            filteredItems.forEach(item => {
+                const portfolioItem = document.createElement('div');
+                portfolioItem.className = 'portfolio-item';
+                portfolioItem.setAttribute('data-category', item.category);
+                
+                portfolioItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="portfolio-img">
+                    <div class="portfolio-info">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                        <span class="category-tag" style="display: inline-block; background-color: rgba(37, 99, 235, 0.1); color: var(--primary-blue); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; margin-top: 0.5rem;">${item.category}</span>
+                    </div>
+                `;
+                
+                portfolioGrid.appendChild(portfolioItem);
+            });
+        }
+        
+        // Portfolio filter functionality
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active filter button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Filter portfolio items
+                const filter = btn.getAttribute('data-filter');
+                renderPortfolioItems(filter);
+            });
+        });
+        
+        // Contact form submission
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real application, you would send this data to a server
+            // For this demo, we'll just show an alert
+            const serviceText = service ? ` for ${service} service` : '';
+            const companyText = company ? ` from ${company}` : '';
+            alert(`Thank you, ${name}${companyText}! Your project inquiry${serviceText} has been received. We'll get back to you at ${email} within 24 hours.`);
+            
+            // Reset the form
+            contactForm.reset();
+        });
+        
+        // Email signup form submission
+        emailSignupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const email = document.getElementById('signupEmail').value;
+            const name = document.getElementById('signupName').value;
+            const serviceTitle = modalServiceTitle.textContent.replace('Notify Me: ', '');
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            emailSignupForm.reset();
+            
+            // In a real application, you would send this data to a server
+            // For this demo, we'll just log it and show success message
+            console.log(`Email signup for ${serviceTitle}: ${email} (${name || 'No name provided'})`);
+            
+            // Close modal after 2 seconds
+            setTimeout(() => {
+                closeEmailSignupModal();
+            }, 2000);
+        });
+        
+        // Add click event to coming soon cards
+        comingSoonCards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Get service data from card attributes
+                const serviceData = {
+                    icon: card.getAttribute('data-service-icon'),
+                    title: card.getAttribute('data-service-title'),
+                    description: card.getAttribute('data-service-description')
+                };
+                
+                // Open the email signup modal
+                openEmailSignupModal(serviceData);
+            });
+        });
+        
+        // Close modal when close button is clicked
+        modalCloseBtn.addEventListener('click', closeEmailSignupModal);
+        
+        // Close modal when clicking outside the modal content
+        emailSignupModal.addEventListener('click', (e) => {
+            if (e.target === emailSignupModal) {
+                closeEmailSignupModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && emailSignupModal.classList.contains('active')) {
+                closeEmailSignupModal();
+            }
+        });
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Show home page by default
+            showPage('home');
+            
+            // Initialize portfolio with all items
+            renderPortfolioItems('all');
+            
+            // Initialize theme
+            initTheme();
+            
+            // Add event listener for theme toggle
+            themeToggle.addEventListener('click', toggleTheme);
+        });
+        
+        // Smooth scroll for hero buttons
+        document.querySelectorAll('.btn-group a').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const targetPage = button.getAttribute('data-page');
+                
+                // Update active nav link
+                navLinksItems.forEach(item => item.classList.remove('active'));
+                document.querySelector(`.nav-link[data-page="${targetPage}"]`).classList.add('active');
+                
+                // Show the target page
+                showPage(targetPage);
+                
+                // Scroll to top of the page
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+        
+        // Listen for changes in OS theme preference
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            // Only apply if user hasn't explicitly set a preference
+            if (!localStorage.getItem('theme')) {
+                const newTheme = e.matches ? 'dark' : 'light';
+                setTheme(newTheme);
+            }
+        });
+    </script>
+</body>
+</html>

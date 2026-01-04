@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching Materials | EduConnect Teacher Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/teacher.png">
+</head>
+<body class="materials">
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <span>EduConnect</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <button id="themeToggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+            
+            <button id="mobileMenuBtn" class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Teacher Portal</h3>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="materials.html" class="active"><i class="fas fa-book-open"></i> Teaching Materials</a></li>
+                <li><a href="#"><i class="fas fa-graduation-cap"></i> Subjects</a></li>
+                <li><a href="announcements.html"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Timetable</a></li>
+                <li><a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a></li>
+                <li><a href="admin.html"><i class="fas fa-cog"></i> Admin Panel</a></li>
+                <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </aside>
+        
+        <!-- Overlay for mobile -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- User Bar -->
+            <div class="user-bar">
+                <div class="user-info">
+                    <div class="user-avatar">JS</div>
+                    <div class="user-details">
+                        <h3>John Smith</h3>
+                        <p>Mathematics Teacher | Grade 10-12</p>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <a href="admin.html" class="btn btn-primary">
+                        <i class="fas fa-upload"></i> Upload New
+                    </a>
+                </div>
+            </div>
+
+            <!-- Page Header -->
+            <div style="margin-bottom: 30px;">
+                <h1>Teaching Materials</h1>
+                <p>Access and manage all your teaching resources, lesson plans, and classroom materials.</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="subjectFilter">Subject</label>
+                    <select id="subjectFilter">
+                        <option value="all">All Subjects</option>
+                        <option value="math">Mathematics</option>
+                        <option value="science">Science</option>
+                        <option value="english">English</option>
+                        <option value="history">History</option>
+                        <option value="art">Art</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="classFilter">Class</label>
+                    <select id="classFilter">
+                        <option value="all">All Classes</option>
+                        <option value="grade9">Grade 9</option>
+                        <option value="grade10">Grade 10</option>
+                        <option value="grade11">Grade 11</option>
+                        <option value="grade12">Grade 12</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="termFilter">Term</label>
+                    <select id="termFilter">
+                        <option value="all">All Terms</option>
+                        <option value="term1">Term 1</option>
+                        <option value="term2">Term 2</option>
+                        <option value="term3">Term 3</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group" style="align-self: flex-end;">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-filter"></i> Apply Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Materials Grid -->
+            <div class="materials-grid">
+                <!-- Material Card 1 -->
+                <div class="material-card">
+                    <div class="material-header">
+                        <div class="material-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="material-info">
+                            <h3>Algebra II - Chapter 5 Notes</h3>
+                            <div class="material-meta">
+                                <span>Mathematics</span>
+                                <span>Grade 11</span>
+                                <span>Term 2</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="material-desc">
+                        Comprehensive notes covering quadratic equations, functions, and graphs for Algebra II students.
+                    </p>
+                    
+                    <div class="material-actions">
+                        <button class="btn btn-primary btn-preview" data-file="algebra_notes.pdf">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                        <button class="btn btn-outline btn-download" data-file="algebra_notes.pdf">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Material Card 2 -->
+                <div class="material-card">
+                    <div class="material-header">
+                        <div class="material-icon ppt">
+                            <i class="fas fa-file-powerpoint"></i>
+                        </div>
+                        <div class="material-info">
+                            <h3>Geometry Basics Presentation</h3>
+                            <div class="material-meta">
+                                <span>Mathematics</span>
+                                <span>Grade 10</span>
+                                <span>Term 1</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="material-desc">
+                        Interactive presentation introducing basic geometric concepts, shapes, and formulas.
+                    </p>
+                    
+                    <div class="material-actions">
+                        <button class="btn btn-primary btn-preview" data-file="geometry_presentation.pptx">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                        <button class="btn btn-outline btn-download" data-file="geometry_presentation.pptx">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Material Card 3 -->
+                <div class="material-card">
+                    <div class="material-header">
+                        <div class="material-icon docx">
+                            <i class="fas fa-file-word"></i>
+                        </div>
+                        <div class="material-info">
+                            <h3>Calculus Practice Problems</h3>
+                            <div class="material-meta">
+                                <span>Mathematics</span>
+                                <span>Grade 12</span>
+                                <span>Term 3</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="material-desc">
+                        Set of practice problems covering limits, derivatives, and integrals with step-by-step solutions.
+                    </p>
+                    
+                    <div class="material-actions">
+                        <button class="btn btn-primary btn-preview" data-file="calculus_problems.docx">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                        <button class="btn btn-outline btn-download" data-file="calculus_problems.docx">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Material Card 4 -->
+                <div class="material-card">
+                    <div class="material-header">
+                        <div class="material-icon pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="material-info">
+                            <h3>Trigonometry Formulas Sheet</h3>
+                            <div class="material-meta">
+                                <span>Mathematics</span>
+                                <span>Grade 11</span>
+                                <span>Term 2</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="material-desc">
+                        Reference sheet with all essential trigonometry formulas, identities, and unit circle values.
+                    </p>
+                    
+                    <div class="material-actions">
+                        <button class="btn btn-primary btn-preview" data-file="trig_formulas.pdf">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                        <button class="btn btn-outline btn-download" data-file="trig_formulas.pdf">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Material Card 5 -->
+                <div class="material-card">
+                    <div class="material-header">
+                        <div class="material-icon ppt">
+                            <i class="fas fa-file-powerpoint"></i>
+                        </div>
+                        <div class="material-info">
+                            <h3>Statistics Introduction</h3>
+                            <div class="material-meta">
+                                <span>Mathematics</span>
+                                <span>Grade 10</span>
+                                <span>Term 3</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="material-desc">
+                        Presentation introducing basic statistical concepts, data analysis, and probability.
+                    </p>
+                    
+                    <div class="material-actions">
+                        <button class="btn btn-primary btn-preview" data-file="statistics_intro.pptx">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                        <button class="btn btn-outline btn-download" data-file="statistics_intro.pptx">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Material Card 6 -->
+                <div class="material-card">
+                    <div class="material-header">
+                        <div class="material-icon docx">
+                            <i class="fas fa-file-word"></i>
+                        </div>
+                        <div class="material-info">
+                            <h3>Linear Algebra Notes</h3>
+                            <div class="material-meta">
+                                <span>Mathematics</span>
+                                <span>Grade 12</span>
+                                <span>Term 3</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="material-desc">
+                        Detailed notes on vectors, matrices, and linear transformations for advanced students.
+                    </p>
+                    
+                    <div class="material-actions">
+                        <button class="btn btn-primary btn-preview" data-file="linear_algebra_notes.docx">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                        <button class="btn btn-outline btn-download" data-file="linear_algebra_notes.docx">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div style="display: flex; justify-content: center; margin-top: 40px;">
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-outline">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-primary">1</button>
+                    <button class="btn btn-outline">2</button>
+                    <button class="btn btn-outline">3</button>
+                    <button class="btn btn-outline">4</button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+     <footer style="text-align:center; font-size:0.8rem; color:#777; margin-top:40px;">
+  Designed & Developed by <a href="https://felixodago5-arch.github.io/test/" target="_blank">FX Design 2025</a>
+</footer>
+</body>
+</html>

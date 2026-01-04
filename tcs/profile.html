@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | EduConnect Teacher Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/teacher.png">
+</head>
+<body class="profile">
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <span>EduConnect</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <button id="themeToggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+            
+            <button id="mobileMenuBtn" class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Teacher Portal</h3>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="materials.html"><i class="fas fa-book-open"></i> Teaching Materials</a></li>
+                <li><a href="#"><i class="fas fa-graduation-cap"></i> Subjects</a></li>
+                <li><a href="announcements.html"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Timetable</a></li>
+                <li><a href="profile.html" class="active"><i class="fas fa-user-circle"></i> Profile</a></li>
+                <li><a href="admin.html"><i class="fas fa-cog"></i> Admin Panel</a></li>
+                <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </aside>
+        
+        <!-- Overlay for mobile -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- User Bar -->
+            <div class="user-bar">
+                <div class="user-info">
+                    <div class="user-avatar">JS</div>
+                    <div class="user-details">
+                        <h3>John Smith</h3>
+                        <p>Mathematics Teacher | Grade 10-12</p>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button id="editProfileBtn" class="btn btn-outline">
+                        <i class="fas fa-edit"></i> Edit Profile
+                    </button>
+                </div>
+            </div>
+
+            <!-- Page Header -->
+            <div style="margin-bottom: 30px;">
+                <h1>My Profile</h1>
+                <p>View and manage your personal information and teaching details.</p>
+            </div>
+
+            <!-- Profile Content -->
+            <div class="profile-container">
+                <!-- Profile Sidebar -->
+                <div class="profile-sidebar">
+                    <div class="profile-avatar">JS</div>
+                    <h3>John Smith</h3>
+                    <p style="color: var(--gray-medium); margin-bottom: 20px;">Mathematics Department</p>
+                    
+                    <div style="margin-top: 30px;">
+                        <h4 style="margin-bottom: 15px;">Account Status</h4>
+                        <div style="background-color: rgba(16, 185, 129, 0.1); color: var(--secondary-color); padding: 8px 15px; border-radius: 20px; display: inline-block; font-weight: 600;">
+                            <i class="fas fa-check-circle"></i> Active
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <h4 style="margin-bottom: 15px;">Member Since</h4>
+                        <p>August 2018</p>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <h4 style="margin-bottom: 15px;">Last Login</h4>
+                        <p>Today, 9:42 AM</p>
+                    </div>
+                </div>
+                
+                <!-- Profile Details -->
+                <div class="profile-details">
+                    <h2 style="margin-bottom: 25px;">Personal Information</h2>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Full Name</div>
+                        <div class="detail-value">John Smith</div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Email Address</div>
+                        <div class="detail-value">john.smith@educonnect.edu</div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Phone Number</div>
+                        <div class="detail-value">(555) 123-4567</div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Department</div>
+                        <div class="detail-value">Mathematics</div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Employee ID</div>
+                        <div class="detail-value">TCH-2023-456</div>
+                    </div>
+                    
+                    <h2 style="margin: 40px 0 25px;">Teaching Information</h2>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Subjects</div>
+                        <div class="detail-value">
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                <span style="background-color: rgba(59, 130, 246, 0.1); color: var(--primary-color); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">
+                                    Algebra I & II
+                                </span>
+                                <span style="background-color: rgba(16, 185, 129, 0.1); color: var(--secondary-color); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">
+                                    Geometry
+                                </span>
+                                <span style="background-color: rgba(139, 92, 246, 0.1); color: var(--accent-color); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">
+                                    Trigonometry
+                                </span>
+                                <span style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">
+                                    Calculus
+                                </span>
+                                <span style="background-color: rgba(239, 68, 68, 0.1); color: #ef4444; padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">
+                                    Statistics
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Classes</div>
+                        <div class="detail-value">Grade 10, Grade 11, Grade 12</div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Years of Experience</div>
+                        <div class="detail-value">8 years</div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <div class="detail-label">Office Location</div>
+                        <div class="detail-value">Room 205, Mathematics Wing</div>
+                    </div>
+                    
+                    <div class="detail-row" style="border-bottom: none;">
+                        <div class="detail-label">Office Hours</div>
+                        <div class="detail-value">Monday - Thursday, 3:00 PM - 4:30 PM</div>
+                    </div>
+                    
+                    <h2 style="margin: 40px 0 25px;">Account Settings</h2>
+                    
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <button class="btn btn-outline">
+                            <i class="fas fa-key"></i> Change Password
+                        </button>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-bell"></i> Notification Settings
+                        </button>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-download"></i> Export Data
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+     <footer style="text-align:center; font-size:0.8rem; color:#777; margin-top:40px;">
+  Designed & Developed by <a href="https://felixodago5-arch.github.io/test/" target="_blank">FX Design 2025</a>
+</footer>
+</body>
+</html>

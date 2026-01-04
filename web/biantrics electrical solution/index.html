@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <link rel="icon" type="image/png" href="images/stima.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional, safe, and fast electrical solutions for homes and businesses. Biantrics Electrical Solutions offers wiring, repairs, installations, and emergency services.">
+    <title>Biantrics Electrical Solutions | Professional Electrician Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-blue: #0A66C2;
+            --white: #FFFFFF;
+            --light-bg: #F5F7FA;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+            
+            /* Light mode variables */
+            --bg-color: #ffffff;
+            --text-color: #222222;
+            --card-bg: #ffffff;
+            --border-color: #e3e3e3;
+            --header-bg: #ffffff;
+            --accent-bg: #eef2f7;
+            --footer-bg: #1a1a1a;
+            --footer-text: #cccccc;
+            --form-bg: #ffffff;
+            --form-border: #ddd;
+            --form-text: #333333;
+        }
+
+        /* Dark mode variables */
+        .dark-mode {
+            --bg-color: #0d1117;
+            --text-color: #e6e6e6;
+            --card-bg: #161b22;
+            --border-color: #2e3a45;
+            --header-bg: #161b22;
+            --accent-bg: #1c2128;
+            --footer-bg: #0a0a0a;
+            --footer-text: #999999;
+            --form-bg: #161b22;
+            --form-border: #2e3a45;
+            --form-text: #e6e6e6;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-blue);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #0855a0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(10, 102, 194, 0.3);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20bd5c;
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-light {
+            background-color: var(--accent-bg);
+        }
+
+        /* Grid System */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+
+        .col {
+            flex: 1;
+            padding: 0 15px;
+        }
+
+        .col-4 {
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+            padding: 0 15px;
+        }
+
+        .col-6 {
+            flex: 0 0 50%;
+            max-width: 50%;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--header-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .logo span {
+            color: var(--text-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            transition: var(--transition);
+            color: #333333 !important;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu a.active {
+            color: var(--white) !important;
+            background-color: var(--primary-blue);
+            padding: 8px 20px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .nav-menu a::before {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            margin-right: 12px;
+            content: '';
+        }
+
+        .nav-menu a.active::before {
+            background-color: var(--white);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(10, 102, 194, 0.1);
+            color: var(--primary-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 102, 194, 0.85), rgba(10, 102, 194, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230A66C2"/><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="none" stroke="%23FFFFFF" stroke-width="2"/><circle cx="50" cy="50" r="15" fill="none" stroke="%23FFFFFF" stroke-width="2"/><line x1="30" y1="50" x2="20" y2="50" stroke="%23FFFFFF" stroke-width="2"/><line x1="80" y1="50" x2="90" y2="50" stroke="%23FFFFFF" stroke-width="2"/><line x1="50" y1="30" x2="50" y2="20" stroke="%23FFFFFF" stroke-width="2"/><line x1="50" y1="70" x2="50" y2="80" stroke="%23FFFFFF" stroke-width="2"/></svg>');
+            background-size: cover;
+            color: var(--white);
+            padding: 180px 0 120px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: var(--white);
+            opacity: 0.9;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            animation: fadeIn 2s ease;
+        }
+
+        /* Services Section */
+        .service-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            margin-bottom: 20px;
+            height: 100%;
+            border: 1px solid var(--border-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            margin-bottom: 20px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .about-features {
+            display: flex;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature i {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            height: 250px;
+            background-color: var(--card-bg);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 102, 194, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            color: var(--white);
+            text-align: center;
+        }
+
+        /* Testimonials Section */
+        .testimonial-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+
+        .testimonial-card:before {
+            content: '"';
+            font-size: 5rem;
+            color: var(--primary-blue);
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .stars {
+            color: #FFC107;
+        }
+
+        /* Booking Section */
+        .booking-form {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--form-bg);
+            color: var(--form-text);
+            border: 1px solid var(--form-border);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.1);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .map-placeholder {
+            height: 300px;
+            background-color: var(--accent-bg);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 60px 0 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--footer-text);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333333;
+            color: #999999;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Dual Scrolling Ticker Styles */
+        .ticker-container {
+            margin: 40px 0 60px;
+            overflow: hidden;
+            position: relative;
+            background: rgba(10, 102, 194, 0.05);
+            border-radius: var(--border-radius);
+            padding: 20px 0;
+        }
+
+        .ticker-row {
+            display: flex;
+            width: max-content;
+            padding: 10px 0;
+        }
+
+        .ticker-top {
+            animation: scroll-left 25s linear infinite;
+        }
+
+        .ticker-bottom {
+            animation: scroll-right 20s linear infinite;
+        }
+
+        .ticker-item {
+            padding: 12px 24px;
+            margin: 0 15px;
+            background: var(--card-bg);
+            border-radius: 30px;
+            box-shadow: var(--box-shadow);
+            font-weight: 600;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .ticker-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .ticker-top .ticker-item {
+            color: var(--primary-blue);
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .ticker-bottom .ticker-item {
+            color: #25D366;
+            border-right: 4px solid #25D366;
+        }
+
+        .ticker-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes scroll-right {
+            0% {
+                transform: translateX(-50%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        #services .row {
+            row-gap: 30px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .col-4, .col-6 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -300px;
+                width: 250px;
+                height: calc(100vh - 80px);
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(245, 247, 250, 0.85) 100%);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 30px 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+                transition: var(--transition);
+                backdrop-filter: blur(10px);
+                overflow-y: auto;
+                border-right: 1px solid rgba(10, 102, 194, 0.1);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 20px;
+                width: 100%;
+            }
+            
+            .col, .col-4, .col-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        .testimonial-form-container {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 12px;
+    background: var(--card-bg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.testimonial-form-container h3 {
+    margin-bottom: 10px;
+}
+
+#testimonialForm label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+}
+
+#testimonialForm input,
+#testimonialForm textarea,
+#testimonialForm select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+#testimonialForm button {
+    margin-top: 15px;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    background: var(--accent-color);
+    color: #0855a0;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+/* Light mode defaults */
+:root {
+    --primary-blue: #007bff;
+    --btn-text: #0855a0;
+    --btn-hover: #0056d2;
+}
+
+/* Dark mode overrides */
+.dark-mode {
+    --primary-blue: #4d9fff;
+    --btn-text: #0855a0;
+    --btn-hover: #1c4d99;
+}
+
+ .testimonial-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 14px 28px;
+        background-color: var(--primary-blue);
+        color: var(--white);
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        font-size: 1.1rem;
+        margin-top: 10px;
+        position: relative;
+        min-height: 52px;
+    }
+
+    .testimonial-btn:hover:not(:disabled) {
+        background-color: #0855a0;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(10, 102, 194, 0.3);
+    }
+
+    .testimonial-btn:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
+
+    .btn-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .intro-section {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+}
+
+.intro-section h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: var(--primary-blue);
+    text-shadow: 0 2px 12px rgba(10, 102, 194, 0.12);
+    letter-spacing: 0.2px;
+    font-weight: 800;
+}
+
+.intro-section p {
+    font-size: 16px;
+    color: var(--text-color);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-weight: 500;
+    max-width: 68ch;
+    text-rendering: optimizeLegibility;
+}
+
+.tagline {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ff9800;
+    background: rgba(255, 152, 0, 0.15);
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.intro-btn {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #ff9800;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.2s ease;
+}
+
+.intro-btn:hover {
+    background: #e68700;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Biantrics <span>Electrical</span></a>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="book.html">Book Now</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Reliable Electrical Services You Can Trust</h1>
+            <p>Professional, safe, and fast electrical solutions for homes and businesses.</p>
+            <div class="hero-btns">
+                <a href="book.html" class="btn">
+                    <i class="fas fa-calendar-check"></i> Book Now
+                </a>
+                <a href="#services" class="btn">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dual Scrolling Ticker -->
+    <div class="ticker-container">
+        <!-- Top Row - Problems (Moving Left to Right) -->
+        <div class="ticker-row ticker-top">
+            <!-- Duplicated content for seamless loop -->
+            <div class="ticker-item">
+                <i class="fas fa-bolt ticker-icon"></i>Flickering Lights
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-power-off ticker-icon"></i>Power Outage
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-home ticker-icon"></i>Renovation Planning
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-exclamation-triangle ticker-icon"></i>Safety Concerns
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-chart-line ticker-icon"></i>Energy Bills Too High
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-plug ticker-icon"></i>Faulty Outlets
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-tools ticker-icon"></i>Circuit Breaker Issues
+            </div>
+            <!-- Duplicated content for seamless loop -->
+            <div class="ticker-item">
+                <i class="fas fa-bolt ticker-icon"></i>Flickering Lights
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-power-off ticker-icon"></i>Power Outage
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-home ticker-icon"></i>Renovation Planning
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-exclamation-triangle ticker-icon"></i>Safety Concerns
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-chart-line ticker-icon"></i>Energy Bills Too High
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-plug ticker-icon"></i>Faulty Outlets
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-tools ticker-icon"></i>Circuit Breaker Issues
+            </div>
+        </div>
+    </div>
+
+    <section class="intro-section">
+    <span class="tagline">Professional • Reliable • Fast</span>
+
+    <h1>Welcome to Biantrics Electrical Solutions</h1>
+
+    <p>
+        We provide safe, modern electrical services for homes and businesses  
+        from wiring and lighting design to fast emergency repairs. Our team 
+        combines technical expertise with friendly, clear communication to 
+        ensure every project is completed on time and within budget.
+    </p>
+
+    <a class="intro-btn" href="#services">Explore Our Services</a>
+</section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-light">
+        <div class="container">
+            <h2>Our Electrical Services</h2>
+            <div class="row">
+                <!-- Service 1 -->
+                <div class="col-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>House Wiring</h3>
+                        <p>Complete residential wiring solutions including new installations, upgrades, and troubleshooting for your home.</p>
+                        <a href="book.html" class="btn">Request Service</a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="col-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Electrical Repairs</h3>
+                        <p>Fast and reliable repair services for all electrical issues, from faulty outlets to circuit breaker problems.</p>
+                        <a href="book.html" class="btn">Request Service</a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="col-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Lighting & Socket Installations</h3>
+                        <p>Professional installation of lighting fixtures, switches, sockets, and dimmers to enhance your space.</p>
+                        <a href="book.html" class="btn">Request Service</a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="col-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h3>Appliance Installation</h3>
+                        <p>Safe and proper installation of electrical appliances including ovens, AC units, and water heaters.</p>
+                        <a href="book.html" class="btn">Request Service</a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="col-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-solar-panel"></i>
+                        </div>
+                        <h3>Solar Installation</h3>
+                        <p>Eco-friendly solar power solutions for homes and businesses to reduce energy costs and carbon footprint.</p>
+                        <a href="book.html" class="btn">Request Service</a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="col-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3>Emergency Electrical Services</h3>
+                        <p>24/7 emergency response for urgent electrical issues to ensure your safety and restore power quickly.</p>
+                        <a href="book.html" class="btn">Request Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+   
+
+  
+              
+                    
+   
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Biantrics Electrical</h3>
+                    <p>Professional, safe, and reliable electrical solutions for homes and businesses in Kenya.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="book.html">Book Now</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">House Wiring</a></li>
+                        <li><a href="#services">Electrical Repairs</a></li>
+                        <li><a href="#services">Lighting Installations</a></li>
+                        <li><a href="#services">Solar Installation</a></li>
+                        <li><a href="#services">Emergency Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> 254 741130410</li>
+                        <li><i class="fab fa-whatsapp"></i> 254 741130410</li>
+                        <li><i class="fas fa-envelope"></i> info@biantrics.co.ke</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+                    </ul>
+                </div>
+            </div>
+            <footer style="text-align:center; font-size:0.8rem; color:#777; margin-top:40px;">
+  Designed & Developed by <a href="https://felixodago5-arch.github.io/test/" target="_blank">FX Design 2025</a>
+</footer>
+            <div class="copyright">
+                <p>&copy; 2025 Biantrics Electrical Solutions. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+     
+    <script>
+    // Testimonials Management System
+    class TestimonialsManager {
+        constructor() {
+            this.scriptsURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'; // Replace with your Google Apps Script URL
+            this.testimonialsContainer = document.getElementById('testimonialsContainer');
+            this.testimonialForm = document.getElementById('testimonialForm');
+            this.submitBtn = document.getElementById('submitBtn');
+            this.formMessage = document.getElementById('formMessage');
+            
+            this.init();
+        }
+
+        init() {
+            this.loadTestimonials();
+            this.setupEventListeners();
+        }
+
+        // Load testimonials from Google Sheets
+        async loadTestimonials() {
+            try {
+                const response = await fetch(`${this.scriptsURL}?action=getTestimonials`);
+                const testimonials = await response.json();
+                
+                this.renderTestimonials(testimonials);
+            } catch (error) {
+                console.error('Error loading testimonials:', error);
+                this.showErrorState('Failed to load testimonials. Please try again later.');
+            }
+        }
+
+        // Render testimonials to the page
+        renderTestimonials(testimonials) {
+            if (!testimonials || testimonials.length === 0) {
+                this.showEmptyState();
+                return;
+            }
+
+            const testimonialsHTML = testimonials.map(testimonial => this.createTestimonialHTML(testimonial)).join('');
+            
+            this.testimonialsContainer.innerHTML = `
+                <div class="row">
+                    ${testimonialsHTML}
+                </div>
+            `;
+
+            // Add fade-in animation
+            setTimeout(() => {
+                document.querySelectorAll('.testimonial-card').forEach(card => {
+                    card.classList.add('fade-in', 'visible');
+                });
+            }, 100);
+        }
+
+        // Create HTML for a single testimonial
+        createTestimonialHTML(testimonial) {
+            const stars = this.generateStars(testimonial.rating);
+            
+            return `
+                <div class="col-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "${testimonial.message}"
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>${testimonial.name}</h4>
+                                <div class="stars">
+                                    ${stars}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Generate star rating HTML
+        generateStars(rating) {
+            if (!rating) return '';
+            
+            const fullStars = '⭐'.repeat(rating);
+            const emptyStars = '☆'.repeat(5 - rating);
+            return fullStars + emptyStars;
+        }
+
+        // Show empty state when no testimonials
+        showEmptyState() {
+            this.testimonialsContainer.innerHTML = `
+                <div class="empty-testimonials">
+                    <i class="fas fa-comments"></i>
+                    <h3>No testimonials yet</h3>
+                    <p>Be the first to share your experience!</p>
+                </div>
+            `;
+        }
+
+        // Show error state
+        showErrorState(message) {
+            this.testimonialsContainer.innerHTML = `
+                <div class="empty-testimonials">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Unable to load testimonials</h3>
+                    <p>${message}</p>
+                    <button onclick="testimonialsManager.loadTestimonials()" class="btn" style="margin-top: 15px;">
+                        Try Again
+                    </button>
+                </div>
+            `;
+        }
+
+        // Setup form event listeners
+        setupEventListeners() {
+            this.testimonialForm.addEventListener('submit', (e) => this.handleFormSubmit(e));
+        }
+
+        // Handle form submission
+        async handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const formData = this.getFormData();
+            
+            if (!this.validateForm(formData)) {
+                return;
+            }
+
+            this.setFormState('loading');
+
+            try {
+                await this.submitTestimonial(formData);
+                this.showFormMessage('Thank you! Your testimonial has been submitted for approval.', 'success');
+                this.testimonialForm.reset();
+            } catch (error) {
+                console.error('Error submitting testimonial:', error);
+                this.showFormMessage('Failed to submit testimonial. Please try again.', 'error');
+            } finally {
+                this.setFormState('idle');
+            }
+        }
+
+        // Get form data
+        getFormData() {
+            return {
+                name: document.getElementById('name').value.trim(),
+                message: document.getElementById('message').value.trim(),
+                contact: document.getElementById('contact').value.trim(),
+                rating: document.getElementById('rating').value,
+                timestamp: new Date().toISOString()
+            };
+        }
+
+        // Validate form data
+        validateForm(data) {
+            if (!data.name) {
+                this.showFormMessage('Please enter your name.', 'error');
+                return false;
+            }
+
+            if (!data.message) {
+                this.showFormMessage('Please enter your testimonial message.', 'error');
+                return false;
+            }
+
+            if (data.message.length < 10) {
+                this.showFormMessage('Please write a more detailed testimonial (at least 10 characters).', 'error');
+                return false;
+            }
+
+            return true;
+        }
+
+        // Submit testimonial to Google Sheets
+        async submitTestimonial(data) {
+            const response = await fetch(this.scriptsURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    action: 'submitTestimonial',
+                    ...data
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Submission failed');
+            }
+
+            return await response.json();
+        }
+
+        // Set form state (loading/idle)
+        setFormState(state) {
+            const btnText = this.submitBtn.querySelector('.btn-text');
+            const btnLoading = this.submitBtn.querySelector('.btn-loading');
+            
+            if (state === 'loading') {
+                this.submitBtn.disabled = true;
+                btnText.style.display = 'none';
+                btnLoading.style.display = 'flex';
+            } else {
+                this.submitBtn.disabled = false;
+                btnText.style.display = 'block';
+                btnLoading.style.display = 'none';
+            }
+        }
+
+        // Show form message
+        showFormMessage(message, type) {
+            this.formMessage.textContent = message;
+            this.formMessage.className = `form-message ${type}`;
+            
+            // Auto-hide success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    this.formMessage.style.display = 'none';
+                }, 5000);
+            }
+        }
+    }
+
+    // Initialize the testimonials manager when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        window.testimonialsManager = new TestimonialsManager();
+    });
+</script>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById("themeToggle");
+        const body = document.body;
+
+        // Check for saved theme preference or default to light
+        const currentTheme = localStorage.getItem("theme") || "light";
+        
+        // Apply the saved theme on page load
+        if (currentTheme === "dark") {
+            body.classList.add("dark-mode");
+            themeToggle.innerHTML = `<i class="fas fa-sun"></i>`;
+        } else {
+            body.classList.remove("dark-mode");
+            themeToggle.innerHTML = `<i class="fas fa-moon"></i>`;
+        }
+
+        // Toggle theme on button click
+        themeToggle.addEventListener("click", () => {
+            body.classList.toggle("dark-mode");
+            
+            if (body.classList.contains("dark-mode")) {
+                localStorage.setItem("theme", "dark");
+                themeToggle.innerHTML = `<i class="fas fa-sun"></i>`;
+            } else {
+                localStorage.setItem("theme", "light");
+                themeToggle.innerHTML = `<i class="fas fa-moon"></i>`;
+            }
+        });
+
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('.nav-menu').classList.remove('active');
+            });
+        });
+
+        // Highlight active navigation link based on current page
+        function highlightActiveLink() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+        highlightActiveLink();
+
+        // Scroll animations
+        function checkFade() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+
+        // Booking Form Submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const location = document.getElementById('location').value;
+            const service = document.getElementById('service').value;
+            const date = document.getElementById('date').value;
+            const notes = document.getElementById('notes').value;
+            
+            const message = `Hello, I'd like to make a booking.%0AName: ${fullName}%0ALocation: ${location}%0AService: ${service}%0APreferred Date: ${date}%0ANotes: ${notes}`;
+            
+            const whatsappUrl = `https://wa.me/254741130410?text=${message}`;
+            
+            window.open(whatsappUrl, '_blank');
+        });
+
+        // Sticky Header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
