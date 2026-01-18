@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - FX Graphics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            display: none;
+        }
+
+        .login-container.show {
+            display: block;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .login-error {
+            background: #fee;
+            color: #c33;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            border-left: 4px solid #c33;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .admin-panel.show {
+            display: block;
+        }
+
+        .admin-header {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .admin-header h1 {
+            color: #333;
+            font-size: 28px;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .logout-btn, .change-password-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn {
+            background: #fee;
+            color: #c33;
+            border: 2px solid #c33;
+        }
+
+        .logout-btn:hover {
+            background: #c33;
+            color: white;
+        }
+
+        .change-password-btn {
+            background: #e8f0ff;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .change-password-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            background: #f5f5f5;
+            border: 2px solid #ddd;
+            border-bottom: 3px solid #ddd;
+            cursor: pointer;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .tab-btn:hover {
+            background: #e8e8e8;
+            color: #667eea;
+            border-color: #667eea;
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: #667eea;
+            border-color: #667eea;
+            border-bottom-color: white;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Form Styles */
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .form-container h2 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 22px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .file-input-wrapper input[type="file"] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-input-label {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #f0f0f0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-input-label:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .file-name {
+            margin-left: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .image-preview {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn-submit, .btn-cancel {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-cancel {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-cancel:hover {
+            background: #e0e0e0;
+        }
+
+        /* Portfolio List */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .portfolio-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-card-image {
+            width: 100%;
+            height: 180px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            overflow: hidden;
+        }
+
+        .portfolio-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portfolio-card-content {
+            padding: 20px;
+        }
+
+        .portfolio-card-title {
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .portfolio-card-category {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-card-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .portfolio-card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-edit, .btn-delete {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-edit {
+            background: #e8f0ff;
+            color: #667eea;
+        }
+
+        .btn-edit:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #fee;
+            color: #c33;
+        }
+
+        .btn-delete:hover {
+            background: #c33;
+            color: white;
+        }
+
+        /* Alerts */
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            border-left: 4px solid;
+            animation: slideIn 0.3s ease;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert-success {
+            background: #efe;
+            color: #3c3;
+            border-color: #3c3;
+        }
+
+        .alert-error {
+            background: #fee;
+            color: #c33;
+            border-color: #c33;
+        }
+
+        .alert-info {
+            background: #eff;
+            color: #33c;
+            border-color: #33c;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            font-size: 22px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Container -->
+    <div class="login-container show" id="loginContainer">
+        <div class="login-header">
+            <h1>Admin Login</h1>
+            <p>FX Graphics Portfolio Manager</p>
+        </div>
+        <div class="login-error" id="loginError"></div>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="login-btn">
+                <span id="loginBtnText">Login</span>
+            </button>
+        </form>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h1>Portfolio Manager</h1>
+            <div class="admin-actions">
+                <button class="change-password-btn" id="changePasswordBtn">
+                    <i class="fas fa-key"></i> Change Password
+                </button>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Alert Messages -->
+        <div class="alert alert-success" id="successAlert"></div>
+        <div class="alert alert-error" id="errorAlert"></div>
+        <div class="alert alert-info" id="infoAlert"></div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="add-homepage">
+                <i class="fas fa-home"></i> Add to Homepage
+            </button>
+            <button class="tab-btn" data-tab="add-portfolio">
+                <i class="fas fa-plus"></i> Add to Portfolio
+            </button>
+            <button class="tab-btn" data-tab="manage-homepage">
+                <i class="fas fa-images"></i> Manage Homepage
+            </button>
+            <button class="tab-btn" data-tab="manage-portfolio">
+                <i class="fas fa-list"></i> Manage Portfolio
+            </button>
+        </div>
+
+        <!-- Add Homepage Tab -->
+        <div class="tab-content active" id="add-homepage">
+            <div class="form-container">
+                <h2>Add Design to Homepage</h2>
+                <form id="addHomepageForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="homepageTitle">Project Title *</label>
+                            <input type="text" id="homepageTitle" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="homepageCategory">Category *</label>
+                            <select id="homepageCategory" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="branding">Branding</option>
+                                <option value="social-media">Social Media Post</option>
+                                <option value="ui-ux">UI/UX</option>
+                                <option value="illustration">Illustration</option>
+                                <option value="photography">Photography</option>
+                                <option value="motion">Motion Graphics</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row full">
+                        <div class="form-group">
+                            <label for="homepageDescription">Description</label>
+                            <textarea id="homepageDescription" name="description" placeholder="Brief description of the project..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="homepageLink">Project Link</label>
+                            <input type="url" id="homepageLink" name="link" placeholder="https://example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="homepageImage">Project Image *</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="homepageImage" name="image" accept="image/*" required>
+                                <label for="homepageImage" class="file-input-label">
+                                    <i class="fas fa-cloud-upload-alt"></i> Choose Image
+                                </label>
+                                <span class="file-name" id="homepageImageName">No file chosen</span>
+                            </div>
+                            <img id="homepageImagePreview" class="image-preview" style="display:none;">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">
+                            <span id="homepageSubmitBtnText">Add to Homepage</span>
+                        </button>
+                        <button type="reset" class="btn-cancel">Clear Form</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+            <div class="form-container">
+                <h2>Add New Portfolio Item</h2>
+                <form id="addPortfolioForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="title">Project Title *</label>
+                            <input type="text" id="title" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category *</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="branding">Branding</option>
+                                <option value="social-media">Social Media Post</option>
+                                <option value="ui-ux">UI/UX</option>
+                                <option value="illustration">Illustration</option>
+                                <option value="photography">Campaign designs</option>
+                                <option value="motion">Motion Graphics</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row full">
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" placeholder="Brief description of the project..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="link">Project Link</label>
+                            <input type="url" id="link" name="link" placeholder="https://example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Project Image *</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="image" name="image" accept="image/*" required>
+                                <label for="image" class="file-input-label">
+                                    <i class="fas fa-cloud-upload-alt"></i> Choose Image
+                                </label>
+                                <span class="file-name" id="imageName">No file chosen</span>
+                            </div>
+                            <img id="imagePreview" class="image-preview" style="display:none;">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">
+                            <span id="submitBtnText">Add Portfolio Item</span>
+                        </button>
+                        <button type="reset" class="btn-cancel">Clear Form</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Portfolio Grid Below Form -->
+            <div class="portfolio-grid" id="portfolioGrid"></div>
+        </div>
+
+        <!-- Manage Portfolio Tab -->
+        <div class="tab-content" id="manage-portfolio">
+
+        <!-- Manage Homepage Tab -->
+        <div class="tab-content" id="manage-homepage">
+            <div style="text-align: center; padding: 40px; color: #999;">
+                <i class="fas fa-spinner fa-spin" style="font-size: 32px;"></i>
+                <p style="margin-top: 15px;">Loading homepage items...</p>
+            </div>
+            <div class="portfolio-grid" id="homepageGrid"></div>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div class="modal" id="changePasswordModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closePasswordModal">&times;</button>
+            <div class="modal-header">Change Admin Password</div>
+            <form id="changePasswordForm">
+                <div class="form-group">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword" name="currentPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" name="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Update Password</button>
+                    <button type="button" class="btn-cancel" id="cancelPasswordBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://fx-graphics-dsfz3l8pb-felixs-projects-342450b4.vercel.app/api';
+        let authToken = localStorage.getItem('authToken');
+
+        // ==================== AUTH HANDLING ====================
+        
+        if (authToken) {
+            showAdminPanel();
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loginBtn = document.querySelector('.login-btn');
+            const loginBtnText = document.getElementById('loginBtnText');
+
+            loginBtnText.innerHTML = '<span class="loading"></span>';
+            loginBtn.disabled = true;
+
+            try {
+                const response = await fetch(`${API_BASE}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Login failed');
+                }
+
+                authToken = data.token;
+                localStorage.setItem('authToken', authToken);
+                showAdminPanel();
+                loadPortfolioItems();
+            } catch (error) {
+                const errorEl = document.getElementById('loginError');
+                errorEl.textContent = error.message;
+                errorEl.classList.add('show');
+            } finally {
+                loginBtnText.textContent = 'Login';
+                loginBtn.disabled = false;
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('authToken');
+            authToken = null;
+            document.getElementById('loginContainer').classList.add('show');
+            document.getElementById('adminPanel').classList.remove('show');
+            document.getElementById('loginForm').reset();
+            document.getElementById('loginError').classList.remove('show');
+        });
+
+        // ==================== UI NAVIGATION ====================
+
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabName = btn.dataset.tab;
+                
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(tabName).classList.add('active');
+
+                if (tabName === 'manage-portfolio') {
+                    loadPortfolioItems();
+                } else if (tabName === 'manage-homepage') {
+                    loadHomepageItems();
+                }
+            });
+        });
+
+        // ==================== FILE INPUT HANDLING ====================
+
+        document.getElementById('image').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            document.getElementById('imageName').textContent = file ? file.name : 'No file chosen';
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const preview = document.getElementById('imagePreview');
+                    preview.src = event.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('homepageImage').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            document.getElementById('homepageImageName').textContent = file ? file.name : 'No file chosen';
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const preview = document.getElementById('homepageImagePreview');
+                    preview.src = event.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // ==================== PORTFOLIO MANAGEMENT ====================
+
+        document.getElementById('addPortfolioForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const submitBtn = document.querySelector('#addPortfolioForm .btn-submit');
+            const submitBtnText = document.getElementById('submitBtnText');
+
+            submitBtnText.innerHTML = '<span class="loading"></span>';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(`${API_BASE}/portfolio`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${authToken}` },
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to add portfolio item');
+                }
+
+                showAlert('Portfolio item added successfully!', 'success');
+                document.getElementById('addPortfolioForm').reset();
+                document.getElementById('imagePreview').style.display = 'none';
+                document.getElementById('imageName').textContent = 'No file chosen';
+            } catch (error) {
+                showAlert(error.message, 'error');
+            } finally {
+                submitBtnText.textContent = 'Add Portfolio Item';
+                submitBtn.disabled = false;
+            }
+        });
+
+        // ==================== HOMEPAGE MANAGEMENT ====================
+
+        document.getElementById('addHomepageForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const submitBtn = document.querySelector('#addHomepageForm .btn-submit');
+            const submitBtnText = document.getElementById('homepageSubmitBtnText');
+
+            submitBtnText.innerHTML = '<span class="loading"></span>';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(`${API_BASE}/homepage`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${authToken}` },
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to add homepage item');
+                }
+
+                showAlert('Homepage item added successfully!', 'success');
+                document.getElementById('addHomepageForm').reset();
+                document.getElementById('homepageImagePreview').style.display = 'none';
+                document.getElementById('homepageImageName').textContent = 'No file chosen';
+            } catch (error) {
+                showAlert(error.message, 'error');
+            } finally {
+                submitBtnText.textContent = 'Add to Homepage';
+                submitBtn.disabled = false;
+            }
+        });
+
+        async function loadPortfolioItems() {
+            const grid = document.getElementById('portfolioGrid');
+            grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;"><i class="fas fa-spinner fa-spin" style="font-size: 32px;"></i></div>';
+
+            try {
+                const response = await fetch(`${API_BASE}/portfolio`);
+                const items = await response.json();
+
+                if (items.length === 0) {
+                    grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">No portfolio items yet. Add one!</div>';
+                    return;
+                }
+
+                grid.innerHTML = items.map(item => `
+                    <div class="portfolio-card">
+                        <div class="portfolio-card-image">
+                            ${item.image ? `<img src="${item.image}" alt="${item.title}">` : '<i class="fas fa-image" style="font-size: 48px;"></i>'}
+                        </div>
+                        <div class="portfolio-card-content">
+                            <div class="portfolio-card-title">${item.title}</div>
+                            <div class="portfolio-card-category">${item.category}</div>
+                            <div class="portfolio-card-description">${item.description || 'No description'}</div>
+                            <div class="portfolio-card-actions">
+                                <button class="btn-edit" onclick="editPortfolioItem('${item.id}')">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn-delete" onclick="deletePortfolioItem('${item.id}')">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #c33;">Error loading portfolio items</div>`;
+            }
+        }
+
+        async function loadHomepageItems() {
+            const grid = document.getElementById('homepageGrid');
+            grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;"><i class="fas fa-spinner fa-spin" style="font-size: 32px;"></i></div>';
+
+            try {
+                const response = await fetch(`${API_BASE}/homepage`);
+                const items = await response.json();
+
+                if (items.length === 0) {
+                    grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">No homepage items yet. Add one!</div>';
+                    return;
+                }
+
+                grid.innerHTML = items.map(item => `
+                    <div class="portfolio-card">
+                        <div class="portfolio-card-image">
+                            ${item.image ? `<img src="${item.image}" alt="${item.title}">` : '<i class="fas fa-image" style="font-size: 48px;"></i>'}
+                        </div>
+                        <div class="portfolio-card-content">
+                            <div class="portfolio-card-title">${item.title}</div>
+                            <div class="portfolio-card-category">${item.category}</div>
+                            <div class="portfolio-card-description">${item.description || 'No description'}</div>
+                            <div class="portfolio-card-actions">
+                                <button class="btn-edit" onclick="editHomepageItem('${item.id}')">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn-delete" onclick="deleteHomepageItem('${item.id}')">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #c33;">Error loading homepage items</div>`;
+            }
+        }
+
+        async function deletePortfolioItem(id) {
+            if (!confirm('Are you sure you want to delete this portfolio item?')) return;
+
+            try {
+                const response = await fetch(`${API_BASE}/portfolio/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to delete item');
+                }
+
+                showAlert('Portfolio item deleted successfully!', 'success');
+                loadPortfolioItems();
+            } catch (error) {
+                showAlert(error.message, 'error');
+            }
+        }
+
+        async function deleteHomepageItem(id) {
+            if (!confirm('Are you sure you want to delete this homepage item?')) return;
+
+            try {
+                const response = await fetch(`${API_BASE}/homepage/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to delete item');
+                }
+
+                showAlert('Homepage item deleted successfully!', 'success');
+                loadHomepageItems();
+            } catch (error) {
+                showAlert(error.message, 'error');
+            }
+        }
+
+        function editPortfolioItem(id) {
+            showAlert('Edit functionality coming soon!', 'info');
+        }
+
+        function editHomepageItem(id) {
+            showAlert('Edit functionality coming soon!', 'info');
+        }
+
+        // ==================== PASSWORD CHANGE ====================
+
+        document.getElementById('changePasswordBtn').addEventListener('click', () => {
+            document.getElementById('changePasswordModal').classList.add('show');
+        });
+
+        document.getElementById('closePasswordModal').addEventListener('click', () => {
+            document.getElementById('changePasswordModal').classList.remove('show');
+        });
+
+        document.getElementById('cancelPasswordBtn').addEventListener('click', () => {
+            document.getElementById('changePasswordModal').classList.remove('show');
+        });
+
+        document.getElementById('changePasswordForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (newPassword !== confirmPassword) {
+                showAlert('Passwords do not match!', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/auth/change-password`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({ currentPassword, newPassword })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to change password');
+                }
+
+                showAlert('Password changed successfully!', 'success');
+                document.getElementById('changePasswordModal').classList.remove('show');
+                document.getElementById('changePasswordForm').reset();
+            } catch (error) {
+                showAlert(error.message, 'error');
+            }
+        });
+
+        // ==================== UTILITY FUNCTIONS ====================
+
+        function showAdminPanel() {
+            document.getElementById('loginContainer').classList.remove('show');
+            document.getElementById('adminPanel').classList.add('show');
+        }
+
+        function showAlert(message, type = 'info') {
+            const alertEl = document.getElementById(`${type}Alert`);
+            alertEl.textContent = message;
+            alertEl.classList.add('show');
+            setTimeout(() => alertEl.classList.remove('show'), 4000);
+        }
+    </script>
+</body>
+</html>

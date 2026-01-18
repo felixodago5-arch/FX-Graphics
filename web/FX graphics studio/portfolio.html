@@ -295,85 +295,16 @@
     <section class="section">
         <div class="container">
             <!-- Portfolio Filters -->
-            <div class="portfolio-filters">
+            <div class="portfolio-filters" id="filterContainer">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="branding">Branding</button>
-                <button class="filter-btn" data-filter="print">Print Design</button>
-                <button class="filter-btn" data-filter="digital">Digital</button>
-                <button class="filter-btn" data-filter="packaging">Packaging</button>
             </div>
 
             <!-- Portfolio Gallery -->
-            <div class="gallery-grid">
-                <!-- Branding Projects -->
-                <div class="gallery-item fade-in stagger-item" data-category="branding">
-                    <img src="images/Document.png" alt="Shoe store Brand Identity - Logo and Brand Guidelines" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>StoreStart Brand Identity</h3>
-                        <p>Complete branding for a tech startup</p>
-                    </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">
+                    <i class="fas fa-spinner fa-spin" style="font-size: 32px;"></i>
+                    <p style="margin-top: 15px;">Loading portfolio items...</p>
                 </div>
-                
-                <div class="gallery-item fade-in stagger-item" data-category="branding">
-                    <img src="images/Document1.png" alt="Organic Foods Logo and Packaging Design" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>One of our complited projects</h3>
-                        <p>A social media post sample</p>
-                    </div>
-                </div>
-
-                <!-- Print Design Projects -->
-                <div class="gallery-item fade-in stagger-item" data-category="print">
-                    <img src="images/IMG-20251115-WA0004.jpg" alt="Fashion Brochure Design" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>General designs</h3>
-                        <p>Different designs based on client's need</p>
-                    </div>
-                </div>
-                
-                <div class="gallery-item fade-in stagger-item" data-category="print">
-                    <img src="images/Document4.png" alt="Music Festival Poster Series" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>Event Poster Series</h3>
-                        <p>Poster designs for a football match</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in stagger-item" data-category="print">
-                    <img src="images/mockup1.png" alt="Music Festival Poster Series" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>business ID</h3>
-                        <p>A custom business ID</p>
-                    </div>
-                </div>
-
-                <!-- Digital Projects -->
-                <div class="gallery-item fade-in stagger-item" data-category="digital">
-                    <img src="images/nyakwere4 mockup.png" alt="Social Media Campaign for Beauty Brand" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>Social Media Campaign</h3>
-                        <p>30-day content for a furniture store</p>
-                    </div>
-                </div>
-                
-                <div class="gallery-item fade-in stagger-item" data-category="digital">
-                    <img src="images/Background.png" alt="E-commerce Website UI Design" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>store sign</h3>
-                        <p>A complete transformation sign</p>
-                    </div>
-                </div>
-
-
-                <!-- Packaging Projects -->
-                <div class="gallery-item fade-in stagger-item" data-category="packaging">
-                    <img src="images/packaging1.png" alt="Premium Coffee Packaging Design" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3>Bulb Packaging</h3>
-                        <p>Premium Bulb brand packaging</p>
-                    </div>
-                </div>
-                
             </div>
 
            
@@ -468,7 +399,95 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 <script>
-     
+    const API_BASE = 'https://fx-graphics-dsfz3l8pb-felixs-projects-342450b4.vercel.app/api';
+    let portfolioItems = [];
+
+    // Load portfolio items from backend
+    async function loadPortfolioItems() {
+        try {
+            const response = await fetch(`${API_BASE}/portfolio`);
+            if (!response.ok) throw new Error('Failed to load portfolio');
+            
+            portfolioItems = await response.json();
+            
+            if (portfolioItems.length === 0) {
+                // If no items from backend, keep existing items
+                console.log('No items from backend, using existing items');
+                return;
+            }
+
+            renderPortfolio(portfolioItems);
+            generateFilters();
+            setupFilterButtons();
+        } catch (error) {
+            console.error('Error loading portfolio:', error);
+            console.log('Falling back to existing items');
+        }
+    }
+
+    // Render portfolio items
+    function renderPortfolio(items) {
+        const gallery = document.getElementById('galleryGrid');
+        
+        if (items.length === 0) {
+            gallery.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">No portfolio items yet.</div>';
+            return;
+        }
+
+        gallery.innerHTML = items.map((item, index) => `
+            <div class="gallery-item fade-in stagger-item" data-category="${item.category}">
+                <img src="${item.image}" alt="${item.title}" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3>${item.title}</h3>
+                    <p>${item.description || 'Creative design project'}</p>
+                </div>
+            </div>
+        `).join('');
+
+        // Reinitialize gallery functionality
+        if (typeof initGallery === 'function') {
+            initGallery();
+        }
+    }
+
+    // Generate filter buttons based on categories
+    function generateFilters() {
+        const categories = [...new Set(portfolioItems.map(item => item.category))];
+        const filterContainer = document.getElementById('filterContainer');
+        
+        filterContainer.innerHTML = `
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            ${categories.map(cat => `
+                <button class="filter-btn" data-filter="${cat}">
+                    ${cat.charAt(0).toUpperCase() + cat.slice(1).replace('-', ' ')}
+                </button>
+            `).join('')}
+        `;
+    }
+
+    // Setup filter button functionality
+    function setupFilterButtons() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                const filtered = filter === 'all' 
+                    ? portfolioItems 
+                    : portfolioItems.filter(item => item.category === filter);
+                
+                renderPortfolio(filtered);
+            });
+        });
+    }
+
+    // Load on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        loadPortfolioItems();
+    });
 </script>
     <script src="js/main.js"></script>
     <script src="js/gallery.js"></script>

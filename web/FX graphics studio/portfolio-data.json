@@ -1,0 +1,59 @@
+{
+  "portfolioItems": [
+    {
+      "id": "1768736879716",
+      "title": "fun",
+      "description": "srgergtg",
+      "category": "branding",
+      "link": "",
+      "image": "/images/image-1768736879673-686268083.png",
+      "createdAt": "2026-01-18T11:47:59.716Z",
+      "updatedAt": "2026-01-18T11:47:59.716Z"
+    },
+    {
+      "id": "1768737183928",
+      "title": "fgdfhth",
+      "description": "ggfg",
+      "category": "branding",
+      "link": "",
+      "image": "/images/image-1768737183926-732784376.jpeg",
+      "createdAt": "2026-01-18T11:53:03.928Z",
+      "updatedAt": "2026-01-18T11:53:03.928Z"
+    },
+    {
+      "id": "1768742297598",
+      "title": "bdfg",
+      "description": "fhfdh",
+      "category": "branding",
+      "link": "",
+      "image": "/images/image-1768742297596-609139509.jpg",
+      "createdAt": "2026-01-18T13:18:17.598Z",
+      "updatedAt": "2026-01-18T13:18:17.598Z"
+    },
+    {
+      "id": "1768742453552",
+      "title": "dsdsfdf",
+      "description": "",
+      "category": "branding",
+      "link": "",
+      "image": "/images/image-1768742453550-990865572.jpeg",
+      "createdAt": "2026-01-18T13:20:53.552Z",
+      "updatedAt": "2026-01-18T13:20:53.552Z"
+    },
+    {
+      "id": "1768744925137",
+      "title": "ewrerdesfr",
+      "description": "",
+      "category": "web-design",
+      "link": "",
+      "image": "/images/image-1768744925135-298141125.jpeg",
+      "createdAt": "2026-01-18T14:02:05.137Z",
+      "updatedAt": "2026-01-18T14:02:05.137Z"
+    }
+  ],
+  "homepageItems": [],
+  "admin": {
+    "username": "admin",
+    "password": "$2b$10$uib2I4LDYoMGmIa9COeJDezOCIzpheGYHbL7ptpr9a9caDgGRwJkO"
+  }
+}
