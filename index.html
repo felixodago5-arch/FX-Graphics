@@ -14,15 +14,62 @@ g<!DOCTYPE html>
     <!-- Add this before the closing </header> tag -->
 <div class="mobile-menu-overlay"></div>
  <style>
+      /* Keep  button styles exactly as they were */
+        .strip-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 35px;
+            background: white;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-width: 200px;
+        }
+        
+       
+        /* Simple container for centering only */
+        .floating-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 20px;
+            /* That's it! No background, no borders */
+        }
+        
+        /* Responsive for buttons */
+        @media (max-width: 768px) {
+            .floating-buttons {
+                flex-direction: column;
+                gap: 25px;
+            }
+            .strip-btn {
+                width: 100%;
+                max-width: 300px;
+                padding: 16px 25px;
+                font-size: 16px;
+            }
+        }
      /* CTA Strip - Can be placed anywhere in page content */
         .cta-strip {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            
             padding: 40px 20px;
             margin: 60px 0;
             width: 100%;
             position: relative;
-            border-top: 3px solid #3b82f6;
-            border-bottom: 3px solid #3b82f6;
+           
         }
 
         .cta-strip-inner {
@@ -209,6 +256,295 @@ g<!DOCTYPE html>
             animation: slideUp 0.8s ease-out;
         }
         
+         /* Testimonial Slider Styles - Compact Version */
+    .testimonial-section {
+        padding: 60px 20px;
+        margin: 40px 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .testimonial-container {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .section-title h2 {
+        font-size: 2rem;
+        color: #1e293b;
+        margin-bottom: 12px;
+        font-weight: 700;
+    }
+    
+    .section-title p {
+        color: #64748b;
+        font-size: 1rem;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .testimonial-slider {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        background: white;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .testimonial-track {
+        display: flex;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .testimonial-slide {
+        min-width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        opacity: 0;
+        transform: translateX(15px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    
+    .testimonial-slide.active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    .testimonial-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 10px;
+    }
+    
+    .quote-icon {
+        font-size: 2rem;
+        color: #94a3b8;
+        margin-bottom: 20px;
+        opacity: 0.8;
+    }
+    
+    .testimonial-text {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        color: #334155;
+        margin-bottom: 25px;
+        font-style: italic;
+        max-width: 600px;
+    }
+    
+    .testimonial-author {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 15px;
+    }
+    
+    .author-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 12px;
+        border: 3px solid #f1f5f9;
+        background-color: #f8fafc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .author-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .author-avatar .avatar-placeholder {
+        font-size: 1.8rem;
+        color: #94a3b8;
+        font-weight: 600;
+    }
+    
+    .author-info h4 {
+        font-size: 1.1rem;
+        color: #1e293b;
+        margin-bottom: 4px;
+        font-weight: 700;
+    }
+    
+    .author-info p {
+        color: #64748b;
+        font-size: 0.9rem;
+    }
+    
+    .slider-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        gap: 15px;
+    }
+    
+    .slider-dots {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .slider-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #e2e8f0;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+    
+    .slider-dot.active {
+        background-color: #94a3b8;
+        transform: scale(1.1);
+    }
+    
+    .slider-nav {
+        display: flex;
+        gap: 12px;
+    }
+    
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        border: 1px solid #e2e8f0;
+        color: #64748b;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    
+    .slider-btn:hover {
+        background-color: #f8fafc;
+        color: #334155;
+        border-color: #cbd5e1;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    
+    .slider-btn:active {
+        transform: translateY(0);
+    }
+    
+    .auto-play-indicator {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        justify-content: center;
+        gap: 8px;
+        color: #94a3b8;
+        font-size: 0.85rem;
+    }
+    
+    .indicator-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #94a3b8;
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+    
+    /* Add a subtle fade-in animation for the section */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .testimonial-section {
+        animation: fadeInUp 0.6s ease-out;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .testimonial-section {
+            padding: 40px 15px;
+        }
+        
+        .testimonial-slider {
+            padding: 25px 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+        }
+        
+        .testimonial-text {
+            font-size: 1rem;
+        }
+        
+        .section-title h2 {
+            font-size: 1.7rem;
+        }
+        
+        .section-title p {
+            font-size: 0.95rem;
+        }
+        
+        .slider-controls {
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .testimonial-text {
+            font-size: 0.95rem;
+        }
+        
+        .quote-icon {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .author-avatar {
+            width: 55px;
+            height: 55px;
+        }
+        
+        .slider-btn {
+            width: 36px;
+            height: 36px;
+        }
+        
+        .testimonial-slider {
+            padding: 20px 15px;
+        }
+    }
  </style>
 </head>
 <body>
@@ -309,6 +645,41 @@ g<!DOCTYPE html>
         </div>
     </section>
 
+      <section class="testimonial-section">
+    <div class="testimonial-container">
+        <div class="section-title">
+            <h2>What Our Clients Say</h2>
+            <p>Don't just take our word for it - hear from some of our satisfied clients</p>
+        </div>
+        
+        <div class="testimonial-slider">
+            <div class="testimonial-track" id="testimonial-track">
+                <!-- Testimonial slides will be dynamically inserted here -->
+            </div>
+            
+            <div class="slider-controls">
+                <div class="slider-dots" id="slider-dots">
+                    <!-- Dots will be dynamically inserted here -->
+                </div>
+                
+                <div class="slider-nav">
+                    <button class="slider-btn" id="prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-btn" id="next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="auto-play-indicator">
+                <div class="indicator-dot"></div>
+                <span>Auto-advancing every 30 seconds</span>
+            </div>
+        </div>
+    </div>
+</section>
+
      <section class="cta-strip">
         <div class="cta-strip-inner">
             <a href="updates.html" class="strip-btn">
@@ -375,12 +746,259 @@ g<!DOCTYPE html>
    class="whatsapp-float">
     <i class="fab fa-whatsapp"></i>
     
+<script>
+    // 1. Local Fallback Data
+    const localTestimonials = [
+        {
+            id: 1,
+            text: "FX Graphics transformed our brand identity completely. The designs they delivered were not only visually stunning but also perfectly captured our company's values. Our customer engagement has increased by 40% since implementing their designs.",
+            author: "Sarah Johnson",
+            role: "Marketing Director, TechVision Inc."
+        },
+        {
+            id: 2,
+            text: "Working with FX Graphics was an absolute pleasure. They understood our vision immediately and delivered exceptional designs that exceeded our expectations. The attention to detail and creative approach is unmatched.",
+            author: "Michael Chen",
+            role: "CEO, GreenLeaf Organics"
+        },
+        {
+            id: 3,
+            text: "The social media graphics package we received was exactly what we needed to boost our online presence. Our engagement rates have doubled, and we're consistently receiving compliments on our visual content. Highly recommended!",
+            author: "Jessica Williams",
+            role: "Social Media Manager, UrbanFit"
+        },
+        {
+            id: 4,
+            text: "As a startup, we needed branding that would make us stand out in a crowded market. FX Graphics delivered a comprehensive brand identity that perfectly represents our innovative approach. The process was smooth and professional.",
+            author: "David Rodriguez",
+            role: "Founder, NovaTech Solutions"
+        },
+        {
+            id: 5,
+            text: "The marketing materials created by FX Graphics for our product launch were phenomenal. They captured the essence of our product and communicated it effectively to our target audience. Sales exceeded projections by 25%.",
+            author: "Amanda Thompson",
+            role: "Product Manager, InnovateCo"
+        }
+    ];
+
+    // 2. Slider variables
+    let currentSlide = 0;
+    let slideInterval;
+    const slideDuration = 3000;
+    let activeTestimonials = [];
+
+    // 3. DOM elements
+    const track = document.getElementById('testimonial-track');
+    const dotsContainer = document.getElementById('slider-dots');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const loadingIndicator = document.getElementById('loading-indicator'); // Optional: Add a loading element
+
+    // 4. Fetch testimonials from Google Sheets
+    async function fetchTestimonials() {
+        const sheetUrl = "https://script.google.com/macros/s/AKfycbwTAaZmkE4-OrSm-r7LDN1D8YQ1EVeBjZ7eHFJfDjITLuUOJhcSlKxsgD8BPZIyFQ2S/exec";
+        
+        try {
+            console.log("Fetching testimonials from Google Sheets...");
+            const response = await fetch(sheetUrl);
+            
+            if (!response.ok) {
+                throw new Error(`Network error: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            console.log("Raw data received:", data);
+            
+            // Convert Google Sheets data to our format
+            if (Array.isArray(data) && data.length > 0) {
+                const processedTestimonials = data.map((item, index) => {
+                    // Use the exact column names from your sheet
+                    return {
+                        id: index + 1,
+                        text: item.Text || "No testimonial text available.",
+                        author: item.Name || "Anonymous",
+                        role: item.company || "Happy Customer"
+                        // Note: We're ignoring Avatar column per your requirement
+                    };
+                });
+                
+                console.log("Processed testimonials:", processedTestimonials);
+                return processedTestimonials;
+            } else {
+                throw new Error("Data is not in expected format");
+            }
+            
+        } catch (error) {
+            console.error("Fetch failed, using local fallback:", error);
+            return localTestimonials;
+        }
+    }
+
+    // 5. Create silhouette avatar from initials
+    function createSilhouetteAvatar(name) {
+        // Get initials (first letters of first two words)
+        const initials = name
+            .split(' ')
+            .map(word => word[0])
+            .join('')
+            .toUpperCase()
+            .slice(0, 2);
+        
+        // Create SVG silhouette with initials
+        return `
+            <svg class="avatar-silhouette" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="40" r="30" fill="#4f46e5" />
+                <circle cx="50" cy="110" r="45" fill="#4f46e5" />
+                <text x="50" y="45" text-anchor="middle" dy=".3em" 
+                      fill="white" font-family="Arial, sans-serif" 
+                      font-size="28" font-weight="bold">
+                    ${initials}
+                </text>
+            </svg>
+        `;
+    }
+
+    // 6. Initialize slider with fetched data
+    async function initSlider() {
+        // Show loading state
+        if (loadingIndicator) loadingIndicator.style.display = 'block';
+        
+        // Fetch or use fallback
+        activeTestimonials = await fetchTestimonials();
+        
+        // Clear existing content
+        track.innerHTML = '';
+        dotsContainer.innerHTML = '';
+        
+        // Check if we have testimonials
+        if (activeTestimonials.length === 0) {
+            track.innerHTML = '<div class="no-testimonials">No testimonials available</div>';
+            if (loadingIndicator) loadingIndicator.style.display = 'none';
+            return;
+        }
+        
+        // Create slides and dots
+        activeTestimonials.forEach((testimonial, index) => {
+            // Create slide
+            const slide = document.createElement('div');
+            slide.className = `testimonial-slide ${index === 0 ? 'active' : ''}`;
+            slide.innerHTML = `
+                <div class="testimonial-content">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <p class="testimonial-text">"${testimonial.text}"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            ${createSilhouetteAvatar(testimonial.author)}
+                        </div>
+                        <div class="author-info">
+                            <h4>${testimonial.author}</h4>
+                            <p>${testimonial.role}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            track.appendChild(slide);
+            
+            // Create dot
+            const dot = document.createElement('button');
+            dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
+            dot.setAttribute('data-index', index);
+            dot.setAttribute('aria-label', `Go to testimonial ${index + 1}`);
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+        
+        // Start auto-play
+        startAutoPlay();
+        
+        // Hide loading indicator
+        if (loadingIndicator) loadingIndicator.style.display = 'none';
+    }
+
+    // 7. Original slider functions (keep these exactly as in your code)
+    function goToSlide(slideIndex) {
+        // Reset all slides and dots
+        document.querySelectorAll('.testimonial-slide').forEach(slide => {
+            slide.classList.remove('active');
+        });
+        document.querySelectorAll('.slider-dot').forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        // Update current slide
+        currentSlide = slideIndex;
+        
+        // Move track
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Activate current slide and dot
+        document.querySelectorAll('.testimonial-slide')[currentSlide].classList.add('active');
+        document.querySelectorAll('.slider-dot')[currentSlide].classList.add('active');
+        
+        // Reset auto-play timer
+        resetAutoPlay();
+    }
+
+    function nextSlide() {
+        const nextIndex = (currentSlide + 1) % activeTestimonials.length;
+        goToSlide(nextIndex);
+    }
+
+    function prevSlide() {
+        const prevIndex = (currentSlide - 1 + activeTestimonials.length) % activeTestimonials.length;
+        goToSlide(prevIndex);
+    }
+
+    function startAutoPlay() {
+        slideInterval = setInterval(nextSlide, slideDuration);
+    }
+
+    function resetAutoPlay() {
+        clearInterval(slideInterval);
+        startAutoPlay();
+    }
+
+    // 8. Event listeners
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoPlay();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoPlay();
+    });
+
+    // Pause auto-play on hover
+    if (track) {
+        track.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        track.addEventListener('mouseleave', () => {
+            startAutoPlay();
+        });
+    }
+
+    // 9. Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initSlider);
+
+    // 10. Optional: Add refresh function to refetch data
+    window.refreshTestimonials = async function() {
+        console.log("Manually refreshing testimonials...");
+        await initSlider();
+    };
+    
+</script>
 
 <script src="gallery.js"></script>  
 <script src="main.js"></script>
 </body>
 
 </html>
+
 
 
 
