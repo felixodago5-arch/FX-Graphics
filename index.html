@@ -672,9 +672,7 @@ g<!DOCTYPE html>
                 </div>
             </div>
             
-            <div class="auto-play-indicator">
-                <div class="indicator-dot"></div>
-                <span>Auto-advancing every 30 seconds</span>
+            
             </div>
         </div>
     </div>
@@ -794,7 +792,7 @@ g<!DOCTYPE html>
     const nextBtn = document.getElementById('next-btn');
     const loadingIndicator = document.getElementById('loading-indicator'); // Optional: Add a loading element
 
-    // 4. Fetch testimonials from Google Sheets
+   // 4. Fetch testimonials from Google Sheets
     async function fetchTestimonials() {
         const sheetUrl = "https://script.google.com/macros/s/AKfycbwTAaZmkE4-OrSm-r7LDN1D8YQ1EVeBjZ7eHFJfDjITLuUOJhcSlKxsgD8BPZIyFQ2S/exec";
         
@@ -815,10 +813,12 @@ g<!DOCTYPE html>
                     // Use the exact column names from your sheet
                     return {
                         id: index + 1,
-                        text: item.Text || "No testimonial text available.",
-                        author: item.Name || "Anonymous",
-                        role: item.company || "Happy Customer"
-                        // Note: We're ignoring Avatar column per your requirement
+                        text: item.text || "No testimonial text available.",
+                        author: item.name || "Anonymous",
+                        role: item.company || "Happy Customer",
+                        rating: item.rating || 5,
+                        avatar: item.avatar || null,
+                        date: item.date || ""
                     };
                 });
                 
@@ -833,7 +833,6 @@ g<!DOCTYPE html>
             return localTestimonials;
         }
     }
-
     // 5. Create silhouette avatar from initials
     function createSilhouetteAvatar(name) {
         // Get initials (first letters of first two words)
@@ -998,6 +997,7 @@ g<!DOCTYPE html>
 </body>
 
 </html>
+
 
 
 
